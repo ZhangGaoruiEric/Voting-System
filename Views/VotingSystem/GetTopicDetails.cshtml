@@ -1,0 +1,66 @@
+﻿@model VotingSystem.data.Topic_Recording
+
+@{
+    ViewBag.Title = "GetTopicDetails";
+}
+
+<h2>GetTopicDetails</h2>
+
+<div>
+    <h4>Topic_Recording</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TopicName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TopicName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TopicSponsor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TopicSponsor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CandidateA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CandidateA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CandidateB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CandidateB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BScore)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditTopic", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
