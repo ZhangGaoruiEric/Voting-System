@@ -35,8 +35,9 @@
             this.UserName_txt = new System.Windows.Forms.TextBox();
             this.Password_txt = new System.Windows.Forms.TextBox();
             this.Reset_btn = new System.Windows.Forms.Button();
-            this.User_button = new System.Windows.Forms.RadioButton();
+            this.Comptoller_button = new System.Windows.Forms.RadioButton();
             this.Staff_button = new System.Windows.Forms.RadioButton();
+            this.User_button = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // Register_btn
@@ -101,6 +102,28 @@
             this.Reset_btn.UseVisualStyleBackColor = true;
             this.Reset_btn.Click += new System.EventHandler(this.Reset_btn_Click);
             // 
+            // Comptoller_button
+            // 
+            this.Comptoller_button.AutoSize = true;
+            this.Comptoller_button.Location = new System.Drawing.Point(569, 292);
+            this.Comptoller_button.Name = "Comptoller_button";
+            this.Comptoller_button.Size = new System.Drawing.Size(108, 19);
+            this.Comptoller_button.TabIndex = 10;
+            this.Comptoller_button.TabStop = true;
+            this.Comptoller_button.Text = "Comptoller";
+            this.Comptoller_button.UseVisualStyleBackColor = true;
+            // 
+            // Staff_button
+            // 
+            this.Staff_button.AutoSize = true;
+            this.Staff_button.Location = new System.Drawing.Point(413, 292);
+            this.Staff_button.Name = "Staff_button";
+            this.Staff_button.Size = new System.Drawing.Size(68, 19);
+            this.Staff_button.TabIndex = 9;
+            this.Staff_button.TabStop = true;
+            this.Staff_button.Text = "Staff";
+            this.Staff_button.UseVisualStyleBackColor = true;
+            // 
             // User_button
             // 
             this.User_button.AutoSize = true;
@@ -112,23 +135,13 @@
             this.User_button.Text = "User";
             this.User_button.UseVisualStyleBackColor = true;
             // 
-            // Staff_button
-            // 
-            this.Staff_button.AutoSize = true;
-            this.Staff_button.Location = new System.Drawing.Point(575, 292);
-            this.Staff_button.Name = "Staff_button";
-            this.Staff_button.Size = new System.Drawing.Size(68, 19);
-            this.Staff_button.TabIndex = 9;
-            this.Staff_button.TabStop = true;
-            this.Staff_button.Text = "Staff";
-            this.Staff_button.UseVisualStyleBackColor = true;
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(904, 471);
+            this.Controls.Add(this.Comptoller_button);
             this.Controls.Add(this.Staff_button);
             this.Controls.Add(this.User_button);
             this.Controls.Add(this.Reset_btn);
@@ -155,8 +168,9 @@
         private System.Windows.Forms.TextBox UserName_txt;
         private System.Windows.Forms.TextBox Password_txt;
         private System.Windows.Forms.Button Reset_btn;
-        private System.Windows.Forms.RadioButton User_button;
+        private System.Windows.Forms.RadioButton Comptoller_button;
         private System.Windows.Forms.RadioButton Staff_button;
+        private System.Windows.Forms.RadioButton User_button;
     }
 }
 

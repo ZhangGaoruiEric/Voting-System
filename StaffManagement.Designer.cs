@@ -33,9 +33,10 @@
             this.userInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.staffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.staffInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registerStaffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topicInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registerStaffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addTopicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +64,7 @@
             // userInformationToolStripMenuItem
             // 
             this.userInformationToolStripMenuItem.Name = "userInformationToolStripMenuItem";
-            this.userInformationToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.userInformationToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.userInformationToolStripMenuItem.Text = "User Information";
             this.userInformationToolStripMenuItem.Click += new System.EventHandler(this.userInformationToolStripMenuItem_Click);
             // 
@@ -75,6 +76,7 @@
             this.staffToolStripMenuItem.Name = "staffToolStripMenuItem";
             this.staffToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
             this.staffToolStripMenuItem.Text = "Staff";
+            this.staffToolStripMenuItem.Click += new System.EventHandler(this.staffToolStripMenuItem_Click);
             // 
             // staffInformationToolStripMenuItem
             // 
@@ -83,10 +85,18 @@
             this.staffInformationToolStripMenuItem.Text = "Staff Information";
             this.staffInformationToolStripMenuItem.Click += new System.EventHandler(this.staffInformationToolStripMenuItem_Click);
             // 
+            // registerStaffToolStripMenuItem
+            // 
+            this.registerStaffToolStripMenuItem.Name = "registerStaffToolStripMenuItem";
+            this.registerStaffToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.registerStaffToolStripMenuItem.Text = "Register staff";
+            this.registerStaffToolStripMenuItem.Click += new System.EventHandler(this.registerStaffToolStripMenuItem_Click);
+            // 
             // topicToolStripMenuItem
             // 
             this.topicToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.topicInformationToolStripMenuItem});
+            this.topicInformationToolStripMenuItem,
+            this.addTopicToolStripMenuItem});
             this.topicToolStripMenuItem.Name = "topicToolStripMenuItem";
             this.topicToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.topicToolStripMenuItem.Text = "Topic";
@@ -96,12 +106,13 @@
             this.topicInformationToolStripMenuItem.Name = "topicInformationToolStripMenuItem";
             this.topicInformationToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.topicInformationToolStripMenuItem.Text = "Topic Information";
+            this.topicInformationToolStripMenuItem.Click += new System.EventHandler(this.topicInformationToolStripMenuItem_Click);
             // 
-            // registerStaffToolStripMenuItem
+            // addTopicToolStripMenuItem
             // 
-            this.registerStaffToolStripMenuItem.Name = "registerStaffToolStripMenuItem";
-            this.registerStaffToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.registerStaffToolStripMenuItem.Text = "Register staff";
+            this.addTopicToolStripMenuItem.Name = "addTopicToolStripMenuItem";
+            this.addTopicToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.addTopicToolStripMenuItem.Text = "Add topic";
             // 
             // StaffManagement
             // 
@@ -129,5 +140,6 @@
         private System.Windows.Forms.ToolStripMenuItem registerStaffToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem topicToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem topicInformationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addTopicToolStripMenuItem;
     }
 }

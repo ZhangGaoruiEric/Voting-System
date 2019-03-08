@@ -220,9 +220,9 @@ namespace VotingSystem
 
                         if (User_button.Checked == true)
                         {
-                            Topic Topic  = new Topic();
+                            Topic topic  = new Topic();
                             this.Hide();
-                            Topic.ShowDialog(this);
+                            topic.ShowDialog(this);
                             // to jump form "Service"
                         }
                         else
@@ -245,9 +245,9 @@ namespace VotingSystem
                         
                         if (Staff_button.Checked == true)
                         {
-                            AddTopic AddTopic = new AddTopic();
+                            StaffManagement staffManagement = new StaffManagement();
                             this.Hide();
-                            AddTopic.ShowDialog(this);
+                            staffManagement.ShowDialog(this);
                             // to jump form "Work"
                         }
                         else
@@ -268,11 +268,11 @@ namespace VotingSystem
                     try
                     {
 
-                        if (Staff_button.Checked == true)
+                        if (Comptoller_button.Checked == true)
                         {
-                            AddTopic AddTopic = new AddTopic();
+                            DataForm dataForm = new DataForm();
                             this.Hide();
-                            AddTopic.ShowDialog(this);
+                            dataForm.ShowDialog(this);
                             // to jump form "Work"
                         }
                         else

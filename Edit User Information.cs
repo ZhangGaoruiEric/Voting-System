@@ -11,9 +11,9 @@ using System.Data.SqlClient;
 
 namespace VotingSystem
 {
-    public partial class EditStaffInformation : Form
+    public partial class EditUserInformation : Form
     {
-        public EditStaffInformation()
+        public EditUserInformation()
         {
             InitializeComponent();
         }
@@ -49,23 +49,59 @@ namespace VotingSystem
 
         private void showDataGrid()
         {
-            strsql = "select * from VotingStaff";
+            strsql = "select * from VotingUsers";
             command = new SqlCommand(strsql, mycon);
             command.ExecuteScalar();
             ds = new DataSet();
             da = new SqlDataAdapter(command);
-            da.Fill(ds, "votingstaff");
-            StaffInfoGV.DataSource = ds.Tables["votingstaff"];
+            da.Fill(ds, "votingusers");
+            UserInfoGV.DataSource = ds.Tables["votingusers"];
             //Show information to form
         }
 
-        private void StaffInfoGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void EditUserInformation_Load(object sender, EventArgs e)
+        {
+            UserName_txt.Select();
+            DBConnect();
+            showDataGrid();
+            UserInfoGV.RowHeadersVisible = false;
+            this.UserInfoGV.Columns[0].Width = 80;
+            this.UserInfoGV.Columns[1].Width = 80;
+            this.UserInfoGV.Columns[2].Width = 80;
+            this.UserInfoGV.Columns[3].Width = 80;
+            this.UserInfoGV.Columns[4].Width = 80;
+            this.UserInfoGV.Columns[5].Width = 80;
+            this.UserInfoGV.Columns[6].Width = 80;
+            UserInfoGV.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 7, FontStyle.Bold);
+        }
+
+        private void update_Load(object sender, EventArgs e)
+        {
+            DBConnect();
+            showDataGrid();
+            int count = ds.Tables["VotingUsers"].Rows.Count;//get this row
+            lbl9.Text = count.ToString() + " records in the table.";
+            UserInfoGV.RowHeadersVisible = false;
+            this.UserInfoGV.Columns[0].Width = 80;
+            this.UserInfoGV.Columns[1].Width = 80;
+            this.UserInfoGV.Columns[2].Width = 80;
+            this.UserInfoGV.Columns[3].Width = 80;
+            this.UserInfoGV.Columns[4].Width = 80;
+            this.UserInfoGV.Columns[5].Width = 80;
+            this.UserInfoGV.Columns[6].Width = 80;
+            UserInfoGV.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 7, FontStyle.Bold);
+            // Change typeface
+            mycon.Close();
+
+        }
+
+        private void UserInfoGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DBConnect();
             int currentline = e.RowIndex;
-            if (e.ColumnIndex == StaffInfoGV.Columns["Delete"].Index)
+            if (e.ColumnIndex == UserInfoGV.Columns["Delete"].Index)
             {
-                string s = StaffInfoGV.CurrentRow.Cells[1].Value.ToString();
+                string s = UserInfoGV.CurrentRow.Cells[1].Value.ToString();
                 DialogResult dr = MessageBox.Show("Are you sure to delete UserID=" + s, "inforamtion", MessageBoxButtons.OKCancel);
                 if (dr == DialogResult.OK)
                 {
@@ -92,14 +128,21 @@ namespace VotingSystem
             }
         }
 
-        private void StaffInfoGV_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void UserInfoGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Key = StaffInfoGV.CurrentRow.Cells[1].Value.ToString();
-            Staff_txt.Text = StaffInfoGV.CurrentRow.Cells[1].Value.ToString();
-            StaffName_txt.Text = StaffInfoGV.CurrentRow.Cells[2].Value.ToString();
-            Password_txt.Text = StaffInfoGV.CurrentRow.Cells[3].Value.ToString();
-            Role_cob.Text = StaffInfoGV.CurrentRow.Cells[4].Value.ToString();
-            
+            Key = UserInfoGV.CurrentRow.Cells[1].Value.ToString();
+            UserId_txt.Text = UserInfoGV.CurrentRow.Cells[1].Value.ToString();
+            UserName_txt.Text = UserInfoGV.CurrentRow.Cells[2].Value.ToString();
+            Password_txt.Text = UserInfoGV.CurrentRow.Cells[3].Value.ToString();
+            Tel_txt.Text = UserInfoGV.CurrentRow.Cells[4].Value.ToString();
+            Email_txt.Text = UserInfoGV.CurrentRow.Cells[5].Value.ToString();
+            Role_txt.Text = UserInfoGV.CurrentRow.Cells[6].Value.ToString();
+            //When click information, the contorl will show information
+        }
+
+        private void Cancle_btn_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void OK_btn_Click(object sender, EventArgs e)
@@ -110,7 +153,7 @@ namespace VotingSystem
             if (dr == DialogResult.OK)
             {
                 DBConnect();
-                strsql = string.Format("update VotingStaff set StaffName='{0}',Password='{1}',Role='{2}' where StaffId ='{3}'", StaffName_txt.Text, Password_txt.Text, Role_cob.Text, Key);
+                strsql = string.Format("update VotingUsers set UserName='{0}',Password='{1}',Telephone='{2}',Email='{3}' where UserId ='{4}'", UserName_txt.Text, Password_txt.Text, Tel_txt.Text, Email_txt.Text, Key);
                 MessageBox.Show(strsql);
                 command = new SqlCommand(strsql, mycon);
                 try
@@ -131,19 +174,6 @@ namespace VotingSystem
                 }
                 //Close database
             }
-        }
-
-        private void EditStaffInformation_Load(object sender, EventArgs e)
-        {
-            StaffName_txt.Select();
-            DBConnect();
-            showDataGrid();
-            StaffInfoGV.RowHeadersVisible = false;
-            this.StaffInfoGV.Columns[0].Width = 80;
-            this.StaffInfoGV.Columns[1].Width = 80;
-            this.StaffInfoGV.Columns[2].Width = 80;
-            this.StaffInfoGV.Columns[3].Width = 80;
-            StaffInfoGV.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 7, FontStyle.Bold);
         }
     }
 }

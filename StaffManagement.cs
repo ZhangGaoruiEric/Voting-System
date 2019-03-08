@@ -26,9 +26,28 @@ namespace VotingSystem
 
         private void staffInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditStaffInformation editUserInformation = new EditUserInformation();
+            EditStaffInformation editstaffInformation = new EditStaffInformation();
             this.Hide();
-            editUserInformation.ShowDialog(this);
+            editstaffInformation.ShowDialog(this);
+        }
+
+        private void staffToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void registerStaffToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegisterForStaff registerForStaff = new RegisterForStaff();
+            this.Hide();
+            registerForStaff.ShowDialog(this);
+        }
+
+        private void topicInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditForTopic editForTopic = new EditForTopic();
+            this.Hide();
+            editForTopic.ShowDialog(this);
         }
     }
 }
