@@ -1,0 +1,10 @@
+CREATE TABLE [dbo].[VotingUsers] (
+    [UserId]    VARCHAR (50)  NOT NULL,
+    [UserName]  VARCHAR (50)  NOT NULL,
+    [Password]  VARCHAR (50)  NOT NULL,
+    [Telephone] VARCHAR (MAX) NULL,
+    [Email]     VARCHAR (MAX) NULL,
+    [Role]      VARCHAR (MAX) NOT NULL,
+    PRIMARY KEY CLUSTERED ([UserId] ASC)
+);
+

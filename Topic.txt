@@ -1,0 +1,16 @@
+CREATE TABLE [dbo].[Topic] (
+    [TopicId]          VARCHAR (50) NOT NULL,
+    [TopicName]        VARCHAR (50) NOT NULL,
+    [Candidate1]       VARCHAR (50) NULL,
+    [Candidate2]       VARCHAR (50) NULL,
+    [Candidate3]       VARCHAR (50) NULL,
+    [Candidate4]       VARCHAR (50) NULL,
+    [Dealine]          VARCHAR (50) NOT NULL,
+    [Limited]          VARCHAR (50) NOT NULL,
+    [Candidate1Voting] VARCHAR (50) NULL,
+    [Candidate2Voting] VARCHAR (50) NULL,
+    [Candidate3Voting] VARCHAR (50) NULL,
+    [Candidate4Voting] VARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([TopicId] ASC)
+);
+

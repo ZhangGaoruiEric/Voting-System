@@ -1,0 +1,11 @@
+CREATE TABLE [dbo].[Voting] (
+    [VotingId]   INT          IDENTITY (1, 1) NOT NULL,
+    [TopicId]    VARCHAR (50) NOT NULL,
+    [TopicName]  VARCHAR (50) NOT NULL,
+    [Candidate1] VARCHAR (50) NULL,
+    [Candidate2] VARCHAR (50) NULL,
+    [Candidate3] VARCHAR (50) NULL,
+    [Candidate4] VARCHAR (50) NULL,
+    CONSTRAINT [PK_Voting] PRIMARY KEY CLUSTERED ([TopicId] ASC)
+);
+
