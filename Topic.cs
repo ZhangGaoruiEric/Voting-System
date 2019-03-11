@@ -80,6 +80,16 @@ namespace VotingSystem
 
         private void OK_btn_Click(object sender, EventArgs e)
         {
+            this.txthour.Text = (Convert.ToInt32(txthour.Text)).ToString();
+            this.txtmm.Text = (Convert.ToInt32(txtmm.Text)).ToString();
+            this.txtss.Text = (Convert.ToInt32(txtss.Text)).ToString();
+            this.txtmss.Text = (Convert.ToInt32(txtmss.Text)).ToString();
+            if (this.txthour.Text == "0"&this.txtmm.Text=="0"&this.txtss.Text=="0"&this.txtmss.Text=="0")
+            {
+                this.timer1.Stop();
+                MessageBox.Show("Invalid vote");
+                
+            }
 
             if (Limited_txt.Text[0].ToString() == "1")
             {
