@@ -43,7 +43,7 @@
             // 
             // Home_btn
             // 
-            this.Home_btn.Location = new System.Drawing.Point(420, 361);
+            this.Home_btn.Location = new System.Drawing.Point(522, 435);
             this.Home_btn.Name = "Home_btn";
             this.Home_btn.Size = new System.Drawing.Size(79, 31);
             this.Home_btn.TabIndex = 31;
@@ -53,7 +53,7 @@
             // 
             // StaffId_txt
             // 
-            this.StaffId_txt.Location = new System.Drawing.Point(418, 27);
+            this.StaffId_txt.Location = new System.Drawing.Point(520, 101);
             this.StaffId_txt.Name = "StaffId_txt";
             this.StaffId_txt.Size = new System.Drawing.Size(145, 25);
             this.StaffId_txt.TabIndex = 30;
@@ -61,7 +61,7 @@
             // StaffId_lab
             // 
             this.StaffId_lab.AutoSize = true;
-            this.StaffId_lab.Location = new System.Drawing.Point(281, 27);
+            this.StaffId_lab.Location = new System.Drawing.Point(383, 101);
             this.StaffId_lab.Name = "StaffId_lab";
             this.StaffId_lab.Size = new System.Drawing.Size(79, 15);
             this.StaffId_lab.TabIndex = 29;
@@ -69,7 +69,7 @@
             // 
             // Exit_btn
             // 
-            this.Exit_btn.Location = new System.Drawing.Point(675, 361);
+            this.Exit_btn.Location = new System.Drawing.Point(777, 435);
             this.Exit_btn.Name = "Exit_btn";
             this.Exit_btn.Size = new System.Drawing.Size(79, 31);
             this.Exit_btn.TabIndex = 27;
@@ -79,7 +79,7 @@
             // 
             // OK_btn
             // 
-            this.OK_btn.Location = new System.Drawing.Point(165, 361);
+            this.OK_btn.Location = new System.Drawing.Point(267, 435);
             this.OK_btn.Name = "OK_btn";
             this.OK_btn.Size = new System.Drawing.Size(79, 31);
             this.OK_btn.TabIndex = 26;
@@ -90,7 +90,7 @@
             // Role_lab
             // 
             this.Role_lab.AutoSize = true;
-            this.Role_lab.Location = new System.Drawing.Point(278, 226);
+            this.Role_lab.Location = new System.Drawing.Point(380, 300);
             this.Role_lab.Name = "Role_lab";
             this.Role_lab.Size = new System.Drawing.Size(47, 15);
             this.Role_lab.TabIndex = 25;
@@ -98,14 +98,14 @@
             // 
             // Password_txt
             // 
-            this.Password_txt.Location = new System.Drawing.Point(418, 152);
+            this.Password_txt.Location = new System.Drawing.Point(520, 226);
             this.Password_txt.Name = "Password_txt";
             this.Password_txt.Size = new System.Drawing.Size(145, 25);
             this.Password_txt.TabIndex = 20;
             // 
             // StaffName_txt
             // 
-            this.StaffName_txt.Location = new System.Drawing.Point(418, 75);
+            this.StaffName_txt.Location = new System.Drawing.Point(520, 149);
             this.StaffName_txt.Name = "StaffName_txt";
             this.StaffName_txt.Size = new System.Drawing.Size(145, 25);
             this.StaffName_txt.TabIndex = 19;
@@ -113,7 +113,7 @@
             // Password_lab
             // 
             this.Password_lab.AutoSize = true;
-            this.Password_lab.Location = new System.Drawing.Point(278, 152);
+            this.Password_lab.Location = new System.Drawing.Point(380, 226);
             this.Password_lab.Name = "Password_lab";
             this.Password_lab.Size = new System.Drawing.Size(79, 15);
             this.Password_lab.TabIndex = 18;
@@ -122,7 +122,7 @@
             // StaffName_lab
             // 
             this.StaffName_lab.AutoSize = true;
-            this.StaffName_lab.Location = new System.Drawing.Point(278, 85);
+            this.StaffName_lab.Location = new System.Drawing.Point(380, 159);
             this.StaffName_lab.Name = "StaffName_lab";
             this.StaffName_lab.Size = new System.Drawing.Size(87, 15);
             this.StaffName_lab.TabIndex = 17;
@@ -133,12 +133,9 @@
             this.Role_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Role_comboBox.FormattingEnabled = true;
             this.Role_comboBox.Items.AddRange(new object[] {
-            "Diamond",
-            "Platina",
-            "Gola",
-            "Silver",
-            "Ordinary"});
-            this.Role_comboBox.Location = new System.Drawing.Point(418, 226);
+            "Staff",
+            "Super Staff"});
+            this.Role_comboBox.Location = new System.Drawing.Point(520, 300);
             this.Role_comboBox.Name = "Role_comboBox";
             this.Role_comboBox.Size = new System.Drawing.Size(145, 23);
             this.Role_comboBox.TabIndex = 84;
@@ -148,7 +145,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(904, 471);
+            this.ClientSize = new System.Drawing.Size(1033, 540);
             this.Controls.Add(this.Role_comboBox);
             this.Controls.Add(this.Home_btn);
             this.Controls.Add(this.StaffId_txt);

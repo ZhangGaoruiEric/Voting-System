@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.StaffInfoGV = new System.Windows.Forms.DataGridView();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.StaffId_lab = new System.Windows.Forms.Label();
             this.StaffName_lab = new System.Windows.Forms.Label();
             this.Password_lab = new System.Windows.Forms.Label();
@@ -38,7 +39,8 @@
             this.Password_txt = new System.Windows.Forms.TextBox();
             this.Role_cob = new System.Windows.Forms.ComboBox();
             this.OK_btn = new System.Windows.Forms.Button();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Back_btn = new System.Windows.Forms.Button();
+            this.Home_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.StaffInfoGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +51,7 @@
             this.StaffInfoGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.StaffInfoGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Delete});
-            this.StaffInfoGV.Location = new System.Drawing.Point(400, 36);
+            this.StaffInfoGV.Location = new System.Drawing.Point(498, 55);
             this.StaffInfoGV.Name = "StaffInfoGV";
             this.StaffInfoGV.ReadOnly = true;
             this.StaffInfoGV.RowHeadersVisible = false;
@@ -58,6 +60,14 @@
             this.StaffInfoGV.TabIndex = 0;
             this.StaffInfoGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StaffInfoGV_CellClick);
             this.StaffInfoGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StaffInfoGV_CellContentClick);
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // StaffId_lab
             // 
@@ -126,7 +136,7 @@
             // 
             // OK_btn
             // 
-            this.OK_btn.Location = new System.Drawing.Point(43, 389);
+            this.OK_btn.Location = new System.Drawing.Point(60, 480);
             this.OK_btn.Name = "OK_btn";
             this.OK_btn.Size = new System.Drawing.Size(75, 23);
             this.OK_btn.TabIndex = 9;
@@ -134,19 +144,33 @@
             this.OK_btn.UseVisualStyleBackColor = true;
             this.OK_btn.Click += new System.EventHandler(this.OK_btn_Click);
             // 
-            // Delete
+            // Back_btn
             // 
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Back_btn.Location = new System.Drawing.Point(314, 480);
+            this.Back_btn.Name = "Back_btn";
+            this.Back_btn.Size = new System.Drawing.Size(75, 23);
+            this.Back_btn.TabIndex = 10;
+            this.Back_btn.Text = "Back";
+            this.Back_btn.UseVisualStyleBackColor = true;
+            this.Back_btn.Click += new System.EventHandler(this.Exit_btn_Click);
+            // 
+            // Home_btn
+            // 
+            this.Home_btn.Location = new System.Drawing.Point(189, 480);
+            this.Home_btn.Name = "Home_btn";
+            this.Home_btn.Size = new System.Drawing.Size(75, 23);
+            this.Home_btn.TabIndex = 11;
+            this.Home_btn.Text = "Home";
+            this.Home_btn.UseVisualStyleBackColor = true;
+            this.Home_btn.Click += new System.EventHandler(this.Home_btn_Click);
             // 
             // EditStaffInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 471);
+            this.ClientSize = new System.Drawing.Size(1033, 540);
+            this.Controls.Add(this.Home_btn);
+            this.Controls.Add(this.Back_btn);
             this.Controls.Add(this.OK_btn);
             this.Controls.Add(this.Role_cob);
             this.Controls.Add(this.Password_txt);
@@ -179,5 +203,7 @@
         private System.Windows.Forms.ComboBox Role_cob;
         private System.Windows.Forms.Button OK_btn;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private System.Windows.Forms.Button Back_btn;
+        private System.Windows.Forms.Button Home_btn;
     }
 }

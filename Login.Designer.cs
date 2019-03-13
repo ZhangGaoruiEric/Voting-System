@@ -42,7 +42,7 @@
             // 
             // Register_btn
             // 
-            this.Register_btn.Location = new System.Drawing.Point(152, 343);
+            this.Register_btn.Location = new System.Drawing.Point(236, 393);
             this.Register_btn.Name = "Register_btn";
             this.Register_btn.Size = new System.Drawing.Size(91, 23);
             this.Register_btn.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             // Login_btn
             // 
-            this.Login_btn.Location = new System.Drawing.Point(406, 342);
+            this.Login_btn.Location = new System.Drawing.Point(490, 392);
             this.Login_btn.Name = "Login_btn";
             this.Login_btn.Size = new System.Drawing.Size(75, 23);
             this.Login_btn.TabIndex = 1;
@@ -63,7 +63,7 @@
             // Username_lab
             // 
             this.Username_lab.AutoSize = true;
-            this.Username_lab.Location = new System.Drawing.Point(303, 118);
+            this.Username_lab.Location = new System.Drawing.Point(387, 168);
             this.Username_lab.Name = "Username_lab";
             this.Username_lab.Size = new System.Drawing.Size(79, 15);
             this.Username_lab.TabIndex = 2;
@@ -72,7 +72,7 @@
             // Password_lab
             // 
             this.Password_lab.AutoSize = true;
-            this.Password_lab.Location = new System.Drawing.Point(303, 206);
+            this.Password_lab.Location = new System.Drawing.Point(387, 256);
             this.Password_lab.Name = "Password_lab";
             this.Password_lab.Size = new System.Drawing.Size(79, 15);
             this.Password_lab.TabIndex = 3;
@@ -80,21 +80,21 @@
             // 
             // UserName_txt
             // 
-            this.UserName_txt.Location = new System.Drawing.Point(446, 118);
+            this.UserName_txt.Location = new System.Drawing.Point(530, 168);
             this.UserName_txt.Name = "UserName_txt";
             this.UserName_txt.Size = new System.Drawing.Size(100, 25);
             this.UserName_txt.TabIndex = 4;
             // 
             // Password_txt
             // 
-            this.Password_txt.Location = new System.Drawing.Point(446, 196);
+            this.Password_txt.Location = new System.Drawing.Point(530, 246);
             this.Password_txt.Name = "Password_txt";
             this.Password_txt.Size = new System.Drawing.Size(100, 25);
             this.Password_txt.TabIndex = 5;
             // 
             // Reset_btn
             // 
-            this.Reset_btn.Location = new System.Drawing.Point(634, 342);
+            this.Reset_btn.Location = new System.Drawing.Point(718, 392);
             this.Reset_btn.Name = "Reset_btn";
             this.Reset_btn.Size = new System.Drawing.Size(75, 23);
             this.Reset_btn.TabIndex = 6;
@@ -105,7 +105,7 @@
             // Comptoller_button
             // 
             this.Comptoller_button.AutoSize = true;
-            this.Comptoller_button.Location = new System.Drawing.Point(569, 292);
+            this.Comptoller_button.Location = new System.Drawing.Point(653, 342);
             this.Comptoller_button.Name = "Comptoller_button";
             this.Comptoller_button.Size = new System.Drawing.Size(108, 19);
             this.Comptoller_button.TabIndex = 10;
@@ -116,7 +116,7 @@
             // Staff_button
             // 
             this.Staff_button.AutoSize = true;
-            this.Staff_button.Location = new System.Drawing.Point(413, 292);
+            this.Staff_button.Location = new System.Drawing.Point(497, 342);
             this.Staff_button.Name = "Staff_button";
             this.Staff_button.Size = new System.Drawing.Size(68, 19);
             this.Staff_button.TabIndex = 9;
@@ -127,7 +127,7 @@
             // User_button
             // 
             this.User_button.AutoSize = true;
-            this.User_button.Location = new System.Drawing.Point(250, 292);
+            this.User_button.Location = new System.Drawing.Point(334, 342);
             this.User_button.Name = "User_button";
             this.User_button.Size = new System.Drawing.Size(60, 19);
             this.User_button.TabIndex = 8;
@@ -140,7 +140,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(904, 471);
+            this.ClientSize = new System.Drawing.Size(1033, 540);
             this.Controls.Add(this.Comptoller_button);
             this.Controls.Add(this.Staff_button);
             this.Controls.Add(this.User_button);

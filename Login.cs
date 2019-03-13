@@ -55,136 +55,66 @@ namespace VotingSystem
 
         private void Login_Load(object sender, EventArgs e)
         {
-            
+            this.Resize += new EventHandler(Form1_Resize);
+
+            X = this.Width;
+            Y = this.Height;
+
+
+            setTag(this);
+            Form1_Resize(new object(), new EventArgs());
         }
 
-        
-        /// <summary>
-        /// 同步缩放窗体上控件的大小和字体
-        /// </summary>
-        public class ControlResizer
+
+
+        private float X;// set a coordinate X
+
+        private float Y;// set a coordinate Y
+
+        private void setTag(Control cons)
         {
-            class ControlPosAndSize
+            foreach (Control con in cons.Controls)
             {
-                public float FrmWidth { get; set; }
-                public float FrmHeight { get; set; }
-                public int Left { get; set; }
-                public int Top { get; set; }
-                public int Width { get; set; }
-                public int Height { get; set; }
-                public float FontSize { get; set; }
-
+                con.Tag = con.Width + ":" + con.Height + ":" + con.Left + ":" + con.Top + ":" + con.Font.Size;
+                if (con.Controls.Count > 0)
+                    setTag(con);
+                //  Width + Height +Left + Top + Font 
             }
-
-            private Form _form;
-
-            //句柄,大小信息
-            private Dictionary<int, ControlPosAndSize> _dic = new Dictionary<int, ControlPosAndSize>();
-            public ControlResizer(Form form)
+        }
+        private void setControls(float newx, float newy, Control cons)
+        {
+            foreach (Control con in cons.Controls)
             {
-                _form = form;
-                _form.Resize += _form_Resize;//绑定窗体大小改变事件
 
-                _form.ControlAdded += form_ControlAdded;  //窗体上新增控件的处理
-                _form.ControlRemoved += form_ControlRemoved;
-
-                SnapControlSize(_form);//记录控件和窗体大小
-            }
-
-            void form_ControlRemoved(object sender, ControlEventArgs e)
-            {
-                var key = e.Control.Handle.ToInt32();
-                _dic.Remove(key);
-            }
-
-            //绑定控件添加事件
-            private void form_ControlAdded(object sender, ControlEventArgs e)
-            {
-                var ctl = e.Control;
-                var ps = new ControlPosAndSize
+                string[] mytag = con.Tag.ToString().Split(new char[] { ':' });
+                float a = Convert.ToSingle(mytag[0]) * newx;
+                con.Width = (int)a;
+                a = Convert.ToSingle(mytag[1]) * newy;
+                con.Height = (int)(a);
+                a = Convert.ToSingle(mytag[2]) * newx;
+                con.Left = (int)(a);
+                a = Convert.ToSingle(mytag[3]) * newy;
+                con.Top = (int)(a);
+                Single currentSize = Convert.ToSingle(mytag[4]) * Math.Min(newx, newy);
+                con.Font = new Font(con.Font.Name, currentSize, con.Font.Style, con.Font.Unit);
+                if (con.Controls.Count > 0)
                 {
-                    FrmHeight = _form.Height,
-                    FrmWidth = _form.Width,
-                    Width = ctl.Width,
-                    Height = ctl.Height,
-                    Left = ctl.Left,
-                    Top = ctl.Top,
-                    FontSize = ctl.Font.Size
-                };
-                var key = ctl.Handle.ToInt32();
-                _dic[key] = ps;
-            }
-
-            void _form_Resize(object sender, EventArgs e)
-            {
-                ResizeControl(_form);
-            }
-
-            private void ResizeControl(Control control)
-            {
-                foreach (Control ctl in control.Controls)
-                {
-                    var key = ctl.Handle.ToInt32();
-                    if (_dic.ContainsKey(key))
-                    {
-                        var ps = _dic[key];
-                        var newx = _form.Width / ps.FrmWidth;
-                        var newy = _form.Height / ps.FrmHeight;
-
-                        ctl.Top = (int)(ps.Top * newy);
-                        ctl.Height = (int)(ps.Height * newy);
-
-                        ctl.Left = (int)(ps.Left * newx);
-                        ctl.Width = (int)(ps.Width * newx);
-
-                        ctl.Font = new Font(ctl.Font.Name, ps.FontSize * newy, ctl.Font.Style, ctl.Font.Unit);
-
-                        if (ctl.Controls.Count > 0)
-                        {
-                            ResizeControl(ctl);
-                        }
-
-                    }
-
+                    setControls(newx, newy, con);
                 }
             }
+            // Store the original form and font size
+        }
 
-            /// <summary>
-            /// 创建控件的大小快照,参数为需要记录大小控件的 容器
-            /// </summary>
-            private void SnapControlSize(Control control)
-            {
-                foreach (Control ctl in control.Controls)
-                {
-                    var ps = new ControlPosAndSize
-                    {
-                        FrmHeight = _form.Height,
-                        FrmWidth = _form.Width,
-                        Width = ctl.Width,
-                        Height = ctl.Height,
-                        Left = ctl.Left,
-                        Top = ctl.Top,
-                        FontSize = ctl.Font.Size
-                    };
-
-                    var key = ctl.Handle.ToInt32();
-
-                    _dic[key] = ps;
-
-                    //绑定添加事件
-                    ctl.ControlAdded += form_ControlAdded;
-                    ctl.ControlRemoved += form_ControlRemoved;
-
-                    if (ctl.Controls.Count > 0)
-                    {
-                        SnapControlSize(ctl);
-                    }
-
-                }
-
-            }
+        void Form1_Resize(object sender, EventArgs e)
+        {
+            float newx = (this.Width) / X;
+            float newy = this.Height / Y;
+            setControls(newx, newy, this);
+            this.Text = this.Width.ToString() + " " + this.Height.ToString();
+            // Reset the font when zooming in on the form
 
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {

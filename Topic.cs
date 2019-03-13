@@ -49,6 +49,54 @@ namespace VotingSystem
             //Check the database
         }
 
+        private float X;// set a coordinate X
+
+        private float Y;// set a coordinate Y
+
+        private void setTag(Control cons)
+        {
+            foreach (Control con in cons.Controls)
+            {
+                con.Tag = con.Width + ":" + con.Height + ":" + con.Left + ":" + con.Top + ":" + con.Font.Size;
+                if (con.Controls.Count > 0)
+                    setTag(con);
+                //  Width + Height +Left + Top + Font 
+            }
+        }
+        private void setControls(float newx, float newy, Control cons)
+        {
+            foreach (Control con in cons.Controls)
+            {
+
+                string[] mytag = con.Tag.ToString().Split(new char[] { ':' });
+                float a = Convert.ToSingle(mytag[0]) * newx;
+                con.Width = (int)a;
+                a = Convert.ToSingle(mytag[1]) * newy;
+                con.Height = (int)(a);
+                a = Convert.ToSingle(mytag[2]) * newx;
+                con.Left = (int)(a);
+                a = Convert.ToSingle(mytag[3]) * newy;
+                con.Top = (int)(a);
+                Single currentSize = Convert.ToSingle(mytag[4]) * Math.Min(newx, newy);
+                con.Font = new Font(con.Font.Name, currentSize, con.Font.Style, con.Font.Unit);
+                if (con.Controls.Count > 0)
+                {
+                    setControls(newx, newy, con);
+                }
+            }
+            // Store the original form and font size
+        }
+
+        void Form1_Resize(object sender, EventArgs e)
+        {
+            float newx = (this.Width) / X;
+            float newy = this.Height / Y;
+            setControls(newx, newy, this);
+            this.Text = this.Width.ToString() + " " + this.Height.ToString();
+            // Reset the font when zooming in on the form
+
+        }
+
         private void showDataGrid()
         {
             strsql = "select * from Topic";
@@ -76,17 +124,28 @@ namespace VotingSystem
             Candidate2_lab.Text = Topic_GD.CurrentRow.Cells[9].Value.ToString();
             Candidate3_lab.Text = Topic_GD.CurrentRow.Cells[10].Value.ToString();
             Candidate4_lab.Text = Topic_GD.CurrentRow.Cells[11].Value.ToString();
+            // when users click data, it will transfor data from form to textbox 
         }
 
         private void OK_btn_Click(object sender, EventArgs e)
         {
+            this.txthour.Text = (Convert.ToInt32(txthour.Text)).ToString();
+            this.txtmm.Text = (Convert.ToInt32(txtmm.Text)).ToString();
+            this.txtss.Text = (Convert.ToInt32(txtss.Text)).ToString();
+            this.txtmss.Text = (Convert.ToInt32(txtmss.Text)).ToString();
+            if (this.txthour.Text == "0" & this.txtmm.Text == "0" & this.txtss.Text == "0" & this.txtmss.Text == "0")
+            {
+                this.timer1.Stop();
+                MessageBox.Show("Invalid vote");
 
-            if (Limited_txt.Text[0].ToString() == "1")
+            }
+
+            if (Limited_txt.Text[0].ToString() == "1") // when limited =1
             {
                 if (Candidate1.Checked == true)
                 {
                     DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 where TopicId = '{1}'", Candidate1_lab.Text,TopicId_txt.Text,  Key);
+                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 where TopicId = '{1}'", Candidate1_lab.Text,TopicId_txt.Text,  Key);// Voting candidate's vote +1
                     command = new SqlCommand(strsql, mycon);
                     try
                     {
@@ -109,10 +168,10 @@ namespace VotingSystem
 
                 }
 
-                if (Candidate2.Checked == true)
+                if (Candidate2.Checked == true) // 
                 {
                     DBConnect();
-                    strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 where TopicId = '{1}'", Candidate2_lab.Text,TopicId_txt.Text,  Key);
+                    strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 where TopicId = '{1}'", Candidate2_lab.Text,TopicId_txt.Text,  Key);// voting candidate2 vote +1
                     command = new SqlCommand(strsql, mycon);
                     try
                     {
@@ -132,10 +191,10 @@ namespace VotingSystem
                     //Close the database
                 }
 
-                if (Candidate3.Checked == true)
+                if (Candidate3.Checked == true) 
                 {
                     DBConnect();
-                    strsql = string.Format("update Topic set Candidate3Voting = Candidate3Voting +1 where TopicId = '{1}'", Candidate3_lab.Text, TopicId_txt.Text, Key);
+                    strsql = string.Format("update Topic set Candidate3Voting = Candidate3Voting +1 where TopicId = '{1}'", Candidate3_lab.Text, TopicId_txt.Text, Key);// voting candidate3 vote +1
                     command = new SqlCommand(strsql, mycon);
                     try
                     {
@@ -158,7 +217,7 @@ namespace VotingSystem
                 if (Candidate4.Checked == true)
                 {
                     DBConnect();
-                    strsql = string.Format("update Topic set Candidate4Voting = Candidate4Voting +1 where TopicId = '{1}'", Candidate4_lab.Text, TopicId_txt.Text, Key);
+                    strsql = string.Format("update Topic set Candidate4Voting = Candidate4Voting +1 where TopicId = '{1}'", Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate4 vote +1
                     command = new SqlCommand(strsql, mycon);
                     try
                     {
@@ -181,12 +240,12 @@ namespace VotingSystem
 
             }
 
-            if (Limited_txt.Text[0].ToString() == "2")
+            if (Limited_txt.Text[0].ToString() == "2") // when limited is 2
             {
                 if (Candidate1.Checked && Candidate2.Checked)
                 {
                     DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 where TopicId = '{2}'", Candidate1_lab.Text,Candidate2_lab.Text, TopicId_txt.Text, Key);
+                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 where TopicId = '{2}'", Candidate1_lab.Text,Candidate2_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 2 vote +1
                     MessageBox.Show(strsql);
                     command = new SqlCommand(strsql, mycon);
                     try
@@ -210,7 +269,7 @@ namespace VotingSystem
                 if (Candidate1.Checked && Candidate3.Checked == true)
                 {
                     DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate3Voting = Candidate3Voting +1 where TopicId = '{2}'", Candidate1_lab.Text, Candidate3_lab.Text, TopicId_txt.Text, Key);
+                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate3Voting = Candidate3Voting +1 where TopicId = '{2}'", Candidate1_lab.Text, Candidate3_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 3 vote +1
                     command = new SqlCommand(strsql, mycon);
                     try
                     {
@@ -233,7 +292,7 @@ namespace VotingSystem
                 if (Candidate1.Checked && Candidate4.Checked == true)
                 {
                     DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{2}'", Candidate1_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);
+                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{2}'", Candidate1_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 4 vote +1
                     command = new SqlCommand(strsql, mycon);
                     try
                     {
@@ -256,7 +315,7 @@ namespace VotingSystem
                 if (Candidate2.Checked && Candidate3.Checked == true)
                 {
                     DBConnect();
-                    strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 where TopicId = '{2}'", Candidate2_lab.Text, Candidate3_lab.Text, TopicId_txt.Text, Key);
+                    strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 where TopicId = '{2}'", Candidate2_lab.Text, Candidate3_lab.Text, TopicId_txt.Text, Key);// voting candidate2 and 3 vote +1
                     command = new SqlCommand(strsql, mycon);
                     try
                     {
@@ -279,7 +338,7 @@ namespace VotingSystem
                 if (Candidate2.Checked && Candidate4.Checked == true)
                 {
                     DBConnect();
-                    strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{2}'", Candidate2_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);
+                    strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{2}'", Candidate2_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate2 and 4 vote +1
                     command = new SqlCommand(strsql, mycon);
                     try
                     {
@@ -302,7 +361,7 @@ namespace VotingSystem
                 if (Candidate3.Checked && Candidate4.Checked == true)
                 {
                     DBConnect();
-                    strsql = string.Format("update Topic set Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{2}'", Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);
+                    strsql = string.Format("update Topic set Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{2}'", Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate3 and 4 vote +1
                     command = new SqlCommand(strsql, mycon);
                     try
                     {
@@ -324,12 +383,12 @@ namespace VotingSystem
 
             }
 
-            if (Limited_txt.Text[0].ToString() == "3")
+            if (Limited_txt.Text[0].ToString() == "3") // when limited is 3
             {
                 if (Candidate1.Checked && Candidate2.Checked && Candidate3.Checked == true)
                 {
                     DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 where TopicId = '{3}'", Candidate1_lab.Text, Candidate2_lab.Text, Candidate3_lab.Text, TopicId_txt.Text, Key);
+                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 where TopicId = '{3}'", Candidate1_lab.Text, Candidate2_lab.Text, Candidate3_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 2 and 3vote +1
                     MessageBox.Show(strsql);
                     command = new SqlCommand(strsql, mycon);
                     try
@@ -353,7 +412,7 @@ namespace VotingSystem
                 if (Candidate1.Checked && Candidate2.Checked && Candidate4.Checked == true)
                 {
                     DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{3}'", Candidate1_lab.Text, Candidate2_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);
+                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{3}'", Candidate1_lab.Text, Candidate2_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 2 and 4vote +1
                     MessageBox.Show(strsql);
                     command = new SqlCommand(strsql, mycon);
                     try
@@ -377,7 +436,7 @@ namespace VotingSystem
                 if (Candidate2.Checked && Candidate3.Checked && Candidate4.Checked == true)
                 {
                     DBConnect();
-                    strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{3}'", Candidate2_lab.Text, Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);
+                    strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{3}'", Candidate2_lab.Text, Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate3 and 2 and 4vote +1
                     MessageBox.Show(strsql);
                     command = new SqlCommand(strsql, mycon);
                     try
@@ -401,7 +460,7 @@ namespace VotingSystem
                 if (Candidate1.Checked && Candidate3.Checked && Candidate4.Checked == true)
                 {
                     DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{3}'", Candidate1_lab.Text, Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);
+                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{3}'", Candidate1_lab.Text, Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 3 and 4 vote +1
                     MessageBox.Show(strsql);
                     command = new SqlCommand(strsql, mycon);
                     try
@@ -425,12 +484,12 @@ namespace VotingSystem
                 
                 }
 
-            if (Limited_txt.Text[0].ToString() == "4")
+            if (Limited_txt.Text[0].ToString() == "4") //when limited is 4
             {
                 if (Candidate1.Checked && Candidate2.Checked && Candidate3.Checked && Candidate4.Checked == true)
                 {
                     DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1where TopicId = '{4}'", Candidate1_lab.Text, Candidate2_lab.Text, Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);
+                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1where TopicId = '{4}'", Candidate1_lab.Text, Candidate2_lab.Text, Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 2 and 3 and 4 vote +1
                     MessageBox.Show(strsql);
                     command = new SqlCommand(strsql, mycon);
                     try
@@ -499,6 +558,7 @@ namespace VotingSystem
             this.Topic_GD.Columns[9].Width = 80;
             this.Topic_GD.Columns[10].Width = 80;
             this.Topic_GD.Columns[11].Width = 80;
+            // update information to database
             Topic_GD.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 7, FontStyle.Bold);
             // Change typeface
             mycon.Close();
@@ -512,23 +572,27 @@ namespace VotingSystem
         {
             
                 
-                this.Topic_GD.Refresh();
-                this.Topic_GD.Update();
+             
             
         }
 
-        
+        private void Home_btn_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            this.Hide();
+            login.ShowDialog(this);
+            //transfor "Login"
+        }
 
-
-
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+            //colse this form
+        }
 
         private void Topic_Load(object sender, EventArgs e)
         {
-            //AddTopic addTopic = new AddTopic();
-            //txthour.Text = addTopic.str;
-            //txtmm.Text = addTopic.ToString();
-            //txtss.Text = addTopic.ToString();
-            //txtmss.Text = addTopic.ToString();
+           
             txthour.Text = Time.i.ToString();
             txtmm.Text = Time.a.ToString();
             txtss.Text = Time.b.ToString();
@@ -550,25 +614,18 @@ namespace VotingSystem
             this.Topic_GD.Columns[10].Width = 80;
             this.Topic_GD.Columns[11].Width = 80;
             Topic_GD.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 7, FontStyle.Bold);
+            // change font type
 
-            
 
-            //this.timer1.Interval = 1;
-            //this.timer1.Start();
-            //if (isstop == 0)//第一次执行或者倒计时事件设置发生变化，则重新倒计时
-            //{
-            //    Timecount = Convert.ToInt32(Dealine_txt.Text) * 60000;//毫秒
-            //    Thread counter = new Thread(Counter);
-            //    counter.Start();
-            //    Control.CheckForIllegalCrossThreadCalls = false;//放弃捕获对错误线程的调用，否则在线程中无法调用控件名  
-            //    this.Dealine_txt.ReadOnly = true;
 
-            //    txthour.ForeColor = Color.Black;
-            //    txtmm.ForeColor = Color.Black;
-            //    txtss.ForeColor = Color.Black;
-            //    txtmss.ForeColor = Color.Black;
-            //}
-            //isstop = 1;//启动
+            this.Resize += new EventHandler(Form1_Resize);
+
+            X = this.Width;
+            Y = this.Height;
+
+
+            setTag(this);
+            Form1_Resize(new object(), new EventArgs());
         }
     }
 }

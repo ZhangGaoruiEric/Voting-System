@@ -37,6 +37,8 @@
             this.topicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topicInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTopicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Exit_btn = new System.Windows.Forms.Button();
+            this.Home_btn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +51,7 @@
             this.topicToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(904, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1033, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -81,14 +83,14 @@
             // staffInformationToolStripMenuItem
             // 
             this.staffInformationToolStripMenuItem.Name = "staffInformationToolStripMenuItem";
-            this.staffInformationToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.staffInformationToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.staffInformationToolStripMenuItem.Text = "Staff Information";
             this.staffInformationToolStripMenuItem.Click += new System.EventHandler(this.staffInformationToolStripMenuItem_Click);
             // 
             // registerStaffToolStripMenuItem
             // 
             this.registerStaffToolStripMenuItem.Name = "registerStaffToolStripMenuItem";
-            this.registerStaffToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.registerStaffToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.registerStaffToolStripMenuItem.Text = "Register staff";
             this.registerStaffToolStripMenuItem.Click += new System.EventHandler(this.registerStaffToolStripMenuItem_Click);
             // 
@@ -104,25 +106,49 @@
             // topicInformationToolStripMenuItem
             // 
             this.topicInformationToolStripMenuItem.Name = "topicInformationToolStripMenuItem";
-            this.topicInformationToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.topicInformationToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
             this.topicInformationToolStripMenuItem.Text = "Topic Information";
             this.topicInformationToolStripMenuItem.Click += new System.EventHandler(this.topicInformationToolStripMenuItem_Click);
             // 
             // addTopicToolStripMenuItem
             // 
             this.addTopicToolStripMenuItem.Name = "addTopicToolStripMenuItem";
-            this.addTopicToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.addTopicToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
             this.addTopicToolStripMenuItem.Text = "Add topic";
+            this.addTopicToolStripMenuItem.Click += new System.EventHandler(this.addTopicToolStripMenuItem_Click);
+            // 
+            // Exit_btn
+            // 
+            this.Exit_btn.Location = new System.Drawing.Point(889, 438);
+            this.Exit_btn.Name = "Exit_btn";
+            this.Exit_btn.Size = new System.Drawing.Size(75, 23);
+            this.Exit_btn.TabIndex = 1;
+            this.Exit_btn.Text = "Exit";
+            this.Exit_btn.UseVisualStyleBackColor = true;
+            this.Exit_btn.Click += new System.EventHandler(this.Exit_btn_Click);
+            // 
+            // Home_btn
+            // 
+            this.Home_btn.Location = new System.Drawing.Point(778, 438);
+            this.Home_btn.Name = "Home_btn";
+            this.Home_btn.Size = new System.Drawing.Size(75, 23);
+            this.Home_btn.TabIndex = 2;
+            this.Home_btn.Text = "Home";
+            this.Home_btn.UseVisualStyleBackColor = true;
+            this.Home_btn.Click += new System.EventHandler(this.Home_btn_Click);
             // 
             // StaffManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 471);
+            this.ClientSize = new System.Drawing.Size(1033, 540);
+            this.Controls.Add(this.Home_btn);
+            this.Controls.Add(this.Exit_btn);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "StaffManagement";
             this.Text = "StaffManagement";
+            this.Load += new System.EventHandler(this.StaffManagement_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -141,5 +167,7 @@
         private System.Windows.Forms.ToolStripMenuItem topicToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem topicInformationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addTopicToolStripMenuItem;
+        private System.Windows.Forms.Button Exit_btn;
+        private System.Windows.Forms.Button Home_btn;
     }
 }

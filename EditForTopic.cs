@@ -59,6 +59,8 @@ namespace VotingSystem
             //Show information to form
         }
 
+        
+
         private void EditForTopic_Load(object sender, EventArgs e)
         {
             DBConnect();
@@ -77,6 +79,17 @@ namespace VotingSystem
             this.EditTopic.Columns[10].Width = 80;
             this.EditTopic.Columns[11].Width = 80;
             EditTopic.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 7, FontStyle.Bold);
+            //Show information from database and change the font
+
+
+            this.Resize += new EventHandler(Form1_Resize);
+
+            X = this.Width;
+            Y = this.Height;
+
+
+            setTag(this);
+            Form1_Resize(new object(), new EventArgs());
         }
 
         private void update_Load(object sender, EventArgs e)
@@ -94,6 +107,7 @@ namespace VotingSystem
             this.EditTopic.Columns[5].Width = 80;
             this.EditTopic.Columns[6].Width = 80;
             this.EditTopic.Columns[7].Width = 80;
+            // update informtion to database
             
             EditTopic.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 7, FontStyle.Bold);
             // Change typeface
@@ -151,9 +165,71 @@ namespace VotingSystem
             Candidate2.Text = EditTopic.CurrentRow.Cells[10].Value.ToString();
             Candidate3.Text = EditTopic.CurrentRow.Cells[11].Value.ToString();
             Candidate4.Text = EditTopic.CurrentRow.Cells[12].Value.ToString();
+            // when user click data, the form will transfor date from table to textbox.
+
         }
 
-       
+        private void Exit_btn_Click(object sender, EventArgs e)
+        {
+            StaffManagement staffManagement = new StaffManagement();
+            this.Hide();
+            staffManagement.ShowDialog(this);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            this.Hide();
+            login.ShowDialog(this);
+        }
+
+        private float X;// set a coordinate X
+
+        private float Y;// set a coordinate Y
+
+        private void setTag(Control cons)
+        {
+            foreach (Control con in cons.Controls)
+            {
+                con.Tag = con.Width + ":" + con.Height + ":" + con.Left + ":" + con.Top + ":" + con.Font.Size;
+                if (con.Controls.Count > 0)
+                    setTag(con);
+                //  Width + Height +Left + Top + Font 
+            }
+        }
+        private void setControls(float newx, float newy, Control cons)
+        {
+            foreach (Control con in cons.Controls)
+            {
+
+                string[] mytag = con.Tag.ToString().Split(new char[] { ':' });
+                float a = Convert.ToSingle(mytag[0]) * newx;
+                con.Width = (int)a;
+                a = Convert.ToSingle(mytag[1]) * newy;
+                con.Height = (int)(a);
+                a = Convert.ToSingle(mytag[2]) * newx;
+                con.Left = (int)(a);
+                a = Convert.ToSingle(mytag[3]) * newy;
+                con.Top = (int)(a);
+                Single currentSize = Convert.ToSingle(mytag[4]) * Math.Min(newx, newy);
+                con.Font = new Font(con.Font.Name, currentSize, con.Font.Style, con.Font.Unit);
+                if (con.Controls.Count > 0)
+                {
+                    setControls(newx, newy, con);
+                }
+            }
+            // Store the original form and font size
+        }
+
+        void Form1_Resize(object sender, EventArgs e)
+        {
+            float newx = (this.Width) / X;
+            float newy = this.Height / Y;
+            setControls(newx, newy, this);
+            this.Text = this.Width.ToString() + " " + this.Height.ToString();
+            // Reset the font when zooming in on the form
+
+        }
 
         private void OK_btn_Click(object sender, EventArgs e)
         {
