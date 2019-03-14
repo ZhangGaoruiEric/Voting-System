@@ -12,3 +12,7 @@ Comptoller:
       Password: 123456
       
  When you click "Login" before, don't forget choose role.
+ 
+ 
+ 1 version is to zoom in and out at will
+ 2 version is need to click button to zoom.
