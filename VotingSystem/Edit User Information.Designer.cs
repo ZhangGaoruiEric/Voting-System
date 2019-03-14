@@ -68,7 +68,7 @@
             // 
             // Exit_btn
             // 
-            this.Exit_btn.Location = new System.Drawing.Point(622, 420);
+            this.Exit_btn.Location = new System.Drawing.Point(724, 504);
             this.Exit_btn.Name = "Exit_btn";
             this.Exit_btn.Size = new System.Drawing.Size(75, 23);
             this.Exit_btn.TabIndex = 26;
@@ -78,7 +78,7 @@
             // 
             // OK_btn
             // 
-            this.OK_btn.Location = new System.Drawing.Point(105, 421);
+            this.OK_btn.Location = new System.Drawing.Point(207, 505);
             this.OK_btn.Name = "OK_btn";
             this.OK_btn.Size = new System.Drawing.Size(75, 23);
             this.OK_btn.TabIndex = 25;
@@ -156,7 +156,7 @@
             this.UserInfoGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UserInfoGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Delete});
-            this.UserInfoGV.Location = new System.Drawing.Point(340, 12);
+            this.UserInfoGV.Location = new System.Drawing.Point(419, 41);
             this.UserInfoGV.Name = "UserInfoGV";
             this.UserInfoGV.RowHeadersVisible = false;
             this.UserInfoGV.RowTemplate.Height = 27;
@@ -173,7 +173,7 @@
             // lbl9
             // 
             this.lbl9.AutoSize = true;
-            this.lbl9.Location = new System.Drawing.Point(411, 420);
+            this.lbl9.Location = new System.Drawing.Point(513, 504);
             this.lbl9.Name = "lbl9";
             this.lbl9.Size = new System.Drawing.Size(0, 15);
             this.lbl9.TabIndex = 32;
@@ -197,7 +197,7 @@
             // 
             // Home_btn
             // 
-            this.Home_btn.Location = new System.Drawing.Point(357, 420);
+            this.Home_btn.Location = new System.Drawing.Point(459, 504);
             this.Home_btn.Name = "Home_btn";
             this.Home_btn.Size = new System.Drawing.Size(75, 23);
             this.Home_btn.TabIndex = 35;
@@ -209,7 +209,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 471);
+            this.ClientSize = new System.Drawing.Size(1033, 540);
             this.Controls.Add(this.Home_btn);
             this.Controls.Add(this.Role_txt);
             this.Controls.Add(this.Role_lab);
@@ -228,6 +228,7 @@
             this.Controls.Add(this.Password_lab);
             this.Controls.Add(this.UserName_lab);
             this.Name = "EditUserInformation";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit User Information";
             this.Load += new System.EventHandler(this.EditUserInformation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.UserInfoGV)).EndInit();

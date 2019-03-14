@@ -53,16 +53,19 @@
             this.Candidate3_lab = new System.Windows.Forms.Label();
             this.Candidate4_lab = new System.Windows.Forms.Label();
             this.lbl9 = new System.Windows.Forms.Label();
-            this.Refresh_btn = new System.Windows.Forms.Button();
             this.Home_btn = new System.Windows.Forms.Button();
             this.Exit_btn = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Topic_GD)).BeginInit();
             this.SuspendLayout();
             // 
             // Topic_GD
             // 
             this.Topic_GD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Topic_GD.Location = new System.Drawing.Point(261, 18);
+            this.Topic_GD.Location = new System.Drawing.Point(348, 18);
             this.Topic_GD.Name = "Topic_GD";
             this.Topic_GD.RowTemplate.Height = 27;
             this.Topic_GD.Size = new System.Drawing.Size(613, 205);
@@ -123,7 +126,7 @@
             // 
             // OK_btn
             // 
-            this.OK_btn.Location = new System.Drawing.Point(571, 411);
+            this.OK_btn.Location = new System.Drawing.Point(933, 342);
             this.OK_btn.Name = "OK_btn";
             this.OK_btn.Size = new System.Drawing.Size(75, 23);
             this.OK_btn.TabIndex = 13;
@@ -151,7 +154,7 @@
             // Candidate1
             // 
             this.Candidate1.AutoSize = true;
-            this.Candidate1.Location = new System.Drawing.Point(12, 352);
+            this.Candidate1.Location = new System.Drawing.Point(12, 350);
             this.Candidate1.Name = "Candidate1";
             this.Candidate1.Size = new System.Drawing.Size(18, 17);
             this.Candidate1.TabIndex = 16;
@@ -160,7 +163,7 @@
             // Candidate2
             // 
             this.Candidate2.AutoSize = true;
-            this.Candidate2.Location = new System.Drawing.Point(13, 396);
+            this.Candidate2.Location = new System.Drawing.Point(12, 486);
             this.Candidate2.Name = "Candidate2";
             this.Candidate2.Size = new System.Drawing.Size(18, 17);
             this.Candidate2.TabIndex = 17;
@@ -169,7 +172,7 @@
             // Candidate3
             // 
             this.Candidate3.AutoSize = true;
-            this.Candidate3.Location = new System.Drawing.Point(227, 352);
+            this.Candidate3.Location = new System.Drawing.Point(442, 350);
             this.Candidate3.Name = "Candidate3";
             this.Candidate3.Size = new System.Drawing.Size(18, 17);
             this.Candidate3.TabIndex = 18;
@@ -178,7 +181,7 @@
             // Candidate4
             // 
             this.Candidate4.AutoSize = true;
-            this.Candidate4.Location = new System.Drawing.Point(227, 396);
+            this.Candidate4.Location = new System.Drawing.Point(442, 484);
             this.Candidate4.Name = "Candidate4";
             this.Candidate4.Size = new System.Drawing.Size(18, 17);
             this.Candidate4.TabIndex = 19;
@@ -219,7 +222,7 @@
             // Candidate1_lab
             // 
             this.Candidate1_lab.AutoSize = true;
-            this.Candidate1_lab.Location = new System.Drawing.Point(47, 352);
+            this.Candidate1_lab.Location = new System.Drawing.Point(65, 350);
             this.Candidate1_lab.Name = "Candidate1_lab";
             this.Candidate1_lab.Size = new System.Drawing.Size(0, 15);
             this.Candidate1_lab.TabIndex = 29;
@@ -227,7 +230,7 @@
             // Candidate2_lab
             // 
             this.Candidate2_lab.AutoSize = true;
-            this.Candidate2_lab.Location = new System.Drawing.Point(47, 398);
+            this.Candidate2_lab.Location = new System.Drawing.Point(65, 486);
             this.Candidate2_lab.Name = "Candidate2_lab";
             this.Candidate2_lab.Size = new System.Drawing.Size(0, 15);
             this.Candidate2_lab.TabIndex = 30;
@@ -235,7 +238,7 @@
             // Candidate3_lab
             // 
             this.Candidate3_lab.AutoSize = true;
-            this.Candidate3_lab.Location = new System.Drawing.Point(258, 360);
+            this.Candidate3_lab.Location = new System.Drawing.Point(494, 354);
             this.Candidate3_lab.Name = "Candidate3_lab";
             this.Candidate3_lab.Size = new System.Drawing.Size(0, 15);
             this.Candidate3_lab.TabIndex = 31;
@@ -243,7 +246,7 @@
             // Candidate4_lab
             // 
             this.Candidate4_lab.AutoSize = true;
-            this.Candidate4_lab.Location = new System.Drawing.Point(258, 396);
+            this.Candidate4_lab.Location = new System.Drawing.Point(494, 486);
             this.Candidate4_lab.Name = "Candidate4_lab";
             this.Candidate4_lab.Size = new System.Drawing.Size(0, 15);
             this.Candidate4_lab.TabIndex = 32;
@@ -256,19 +259,9 @@
             this.lbl9.Size = new System.Drawing.Size(0, 15);
             this.lbl9.TabIndex = 33;
             // 
-            // Refresh_btn
-            // 
-            this.Refresh_btn.Location = new System.Drawing.Point(588, 264);
-            this.Refresh_btn.Name = "Refresh_btn";
-            this.Refresh_btn.Size = new System.Drawing.Size(75, 23);
-            this.Refresh_btn.TabIndex = 34;
-            this.Refresh_btn.Text = "Refresh";
-            this.Refresh_btn.UseVisualStyleBackColor = true;
-            this.Refresh_btn.Click += new System.EventHandler(this.Refresh_btn_Click);
-            // 
             // Home_btn
             // 
-            this.Home_btn.Location = new System.Drawing.Point(676, 411);
+            this.Home_btn.Location = new System.Drawing.Point(933, 420);
             this.Home_btn.Name = "Home_btn";
             this.Home_btn.Size = new System.Drawing.Size(75, 23);
             this.Home_btn.TabIndex = 35;
@@ -278,7 +271,7 @@
             // 
             // Exit_btn
             // 
-            this.Exit_btn.Location = new System.Drawing.Point(775, 410);
+            this.Exit_btn.Location = new System.Drawing.Point(933, 504);
             this.Exit_btn.Name = "Exit_btn";
             this.Exit_btn.Size = new System.Drawing.Size(75, 23);
             this.Exit_btn.TabIndex = 36;
@@ -286,14 +279,49 @@
             this.Exit_btn.UseVisualStyleBackColor = true;
             this.Exit_btn.Click += new System.EventHandler(this.button2_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(90, 347);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(271, 86);
+            this.textBox1.TabIndex = 37;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(521, 347);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(271, 86);
+            this.textBox2.TabIndex = 38;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(90, 442);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(271, 86);
+            this.textBox3.TabIndex = 39;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(521, 442);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(271, 86);
+            this.textBox4.TabIndex = 40;
+            // 
             // Topic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 471);
+            this.ClientSize = new System.Drawing.Size(1033, 540);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.Exit_btn);
             this.Controls.Add(this.Home_btn);
-            this.Controls.Add(this.Refresh_btn);
             this.Controls.Add(this.lbl9);
             this.Controls.Add(this.Candidate4_lab);
             this.Controls.Add(this.Candidate3_lab);
@@ -318,6 +346,7 @@
             this.Controls.Add(this.Topic_lab);
             this.Controls.Add(this.Topic_GD);
             this.Name = "Topic";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Topic";
             this.Load += new System.EventHandler(this.Topic_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Topic_GD)).EndInit();
@@ -352,8 +381,11 @@
         private System.Windows.Forms.Label Candidate3_lab;
         private System.Windows.Forms.Label Candidate4_lab;
         private System.Windows.Forms.Label lbl9;
-        private System.Windows.Forms.Button Refresh_btn;
         private System.Windows.Forms.Button Home_btn;
         private System.Windows.Forms.Button Exit_btn;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }

@@ -85,17 +85,17 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegisterForStaff.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegisterForStaff.Designer.cs">
-      <DependentUpon>RegisterForStaff.cs</DependentUpon>
-    </Compile>
     <Compile Include="EditForTopic.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EditForTopic.Designer.cs">
       <DependentUpon>EditForTopic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterForStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterForStaff.Designer.cs">
+      <DependentUpon>RegisterForStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="RegisterForUser.cs">
       <SubType>Form</SubType>
@@ -143,11 +143,11 @@
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegisterForStaff.resx">
-      <DependentUpon>RegisterForStaff.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="EditForTopic.resx">
       <DependentUpon>EditForTopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterForStaff.resx">
+      <DependentUpon>RegisterForStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterForUser.resx">
       <DependentUpon>RegisterForUser.cs</DependentUpon>

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace VotingSystem
 {
@@ -16,7 +17,10 @@ namespace VotingSystem
         public RegisterForUser()
         {
             InitializeComponent();
+            
         }
+
+       
 
         string strcon, strsql;
         SqlConnection mycon;
@@ -43,8 +47,11 @@ namespace VotingSystem
             //Check the database
         }
 
+       
+
         private void RegisterForUser_Load(object sender, EventArgs e)
         {
+            
             this.Resize += new EventHandler(Form1_Resize);
 
             X = this.Width;
@@ -115,6 +122,12 @@ namespace VotingSystem
             login.ShowDialog(this);
         }
 
+       
+
+       
+
+
+
         private void OK_btn_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(UserName_txt.Text))
@@ -137,7 +150,7 @@ namespace VotingSystem
 
             if (DBConnect())
             {
-                strsql = string.Format("insert into VotingUsers(UserId,UserName,Password,Telephone,Email,Role) values('{0}','{1}','{2}','{3}','{4}','{5}')", UserId_txt.Text,UserName_txt.Text, Password_txt.Text, Tel_txt.Text, Email_txt.Text, Role_comboBox.Text);
+                strsql = string.Format("insert into VotingUsers(UserId,UserName,Password,Telephone,Email,Role,Reason) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", UserId_txt.Text,UserName_txt.Text, Password_txt.Text, Tel_txt.Text, Email_txt.Text, Role_comboBox.Text,Reason_txt);
                 //Add information in the database
                 MessageBox.Show(strsql);
                 command = new SqlCommand(strsql, mycon);
@@ -159,6 +172,14 @@ namespace VotingSystem
                 //Close the database
             }
             }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
+
+        
+    }
+
     }
 

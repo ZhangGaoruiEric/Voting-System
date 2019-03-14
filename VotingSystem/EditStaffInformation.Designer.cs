@@ -51,7 +51,7 @@
             this.StaffInfoGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.StaffInfoGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Delete});
-            this.StaffInfoGV.Location = new System.Drawing.Point(400, 36);
+            this.StaffInfoGV.Location = new System.Drawing.Point(498, 55);
             this.StaffInfoGV.Name = "StaffInfoGV";
             this.StaffInfoGV.ReadOnly = true;
             this.StaffInfoGV.RowHeadersVisible = false;
@@ -136,7 +136,7 @@
             // 
             // OK_btn
             // 
-            this.OK_btn.Location = new System.Drawing.Point(43, 389);
+            this.OK_btn.Location = new System.Drawing.Point(60, 480);
             this.OK_btn.Name = "OK_btn";
             this.OK_btn.Size = new System.Drawing.Size(75, 23);
             this.OK_btn.TabIndex = 9;
@@ -146,7 +146,7 @@
             // 
             // Back_btn
             // 
-            this.Back_btn.Location = new System.Drawing.Point(297, 389);
+            this.Back_btn.Location = new System.Drawing.Point(314, 480);
             this.Back_btn.Name = "Back_btn";
             this.Back_btn.Size = new System.Drawing.Size(75, 23);
             this.Back_btn.TabIndex = 10;
@@ -156,7 +156,7 @@
             // 
             // Home_btn
             // 
-            this.Home_btn.Location = new System.Drawing.Point(172, 389);
+            this.Home_btn.Location = new System.Drawing.Point(189, 480);
             this.Home_btn.Name = "Home_btn";
             this.Home_btn.Size = new System.Drawing.Size(75, 23);
             this.Home_btn.TabIndex = 11;
@@ -168,7 +168,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 471);
+            this.ClientSize = new System.Drawing.Size(1033, 540);
             this.Controls.Add(this.Home_btn);
             this.Controls.Add(this.Back_btn);
             this.Controls.Add(this.OK_btn);
@@ -182,6 +182,7 @@
             this.Controls.Add(this.StaffId_lab);
             this.Controls.Add(this.StaffInfoGV);
             this.Name = "EditStaffInformation";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditStaffInformation";
             this.Load += new System.EventHandler(this.EditStaffInformation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.StaffInfoGV)).EndInit();

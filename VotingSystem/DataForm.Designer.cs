@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.VotingData_GV = new System.Windows.Forms.DataGridView();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Candidate1_lab = new System.Windows.Forms.Label();
@@ -61,16 +61,16 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(519, 29);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(609, 26);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(360, 256);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
@@ -96,7 +96,7 @@
             // Candidate3_lab
             // 
             this.Candidate3_lab.AutoSize = true;
-            this.Candidate3_lab.Location = new System.Drawing.Point(51, 429);
+            this.Candidate3_lab.Location = new System.Drawing.Point(48, 472);
             this.Candidate3_lab.Name = "Candidate3_lab";
             this.Candidate3_lab.Size = new System.Drawing.Size(87, 15);
             this.Candidate3_lab.TabIndex = 6;
@@ -105,7 +105,7 @@
             // Candidate4_lab
             // 
             this.Candidate4_lab.AutoSize = true;
-            this.Candidate4_lab.Location = new System.Drawing.Point(270, 429);
+            this.Candidate4_lab.Location = new System.Drawing.Point(267, 472);
             this.Candidate4_lab.Name = "Candidate4_lab";
             this.Candidate4_lab.Size = new System.Drawing.Size(87, 15);
             this.Candidate4_lab.TabIndex = 8;
@@ -113,7 +113,7 @@
             // 
             // Show_btn
             // 
-            this.Show_btn.Location = new System.Drawing.Point(598, 375);
+            this.Show_btn.Location = new System.Drawing.Point(710, 472);
             this.Show_btn.Name = "Show_btn";
             this.Show_btn.Size = new System.Drawing.Size(138, 39);
             this.Show_btn.TabIndex = 10;
@@ -137,21 +137,21 @@
             // 
             // Candidate3_txt
             // 
-            this.Candidate3_txt.Location = new System.Drawing.Point(145, 429);
+            this.Candidate3_txt.Location = new System.Drawing.Point(142, 472);
             this.Candidate3_txt.Name = "Candidate3_txt";
             this.Candidate3_txt.Size = new System.Drawing.Size(100, 25);
             this.Candidate3_txt.TabIndex = 13;
             // 
             // Candidate4_txt
             // 
-            this.Candidate4_txt.Location = new System.Drawing.Point(364, 429);
+            this.Candidate4_txt.Location = new System.Drawing.Point(361, 472);
             this.Candidate4_txt.Name = "Candidate4_txt";
             this.Candidate4_txt.Size = new System.Drawing.Size(100, 25);
             this.Candidate4_txt.TabIndex = 14;
             // 
             // Alter_btn
             // 
-            this.Alter_btn.Location = new System.Drawing.Point(450, 375);
+            this.Alter_btn.Location = new System.Drawing.Point(562, 472);
             this.Alter_btn.Name = "Alter_btn";
             this.Alter_btn.Size = new System.Drawing.Size(133, 35);
             this.Alter_btn.TabIndex = 15;
@@ -161,7 +161,7 @@
             // 
             // Exit_btn
             // 
-            this.Exit_btn.Location = new System.Drawing.Point(754, 375);
+            this.Exit_btn.Location = new System.Drawing.Point(866, 472);
             this.Exit_btn.Name = "Exit_btn";
             this.Exit_btn.Size = new System.Drawing.Size(138, 39);
             this.Exit_btn.TabIndex = 16;
@@ -173,7 +173,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 471);
+            this.ClientSize = new System.Drawing.Size(1033, 540);
             this.Controls.Add(this.Exit_btn);
             this.Controls.Add(this.Alter_btn);
             this.Controls.Add(this.Candidate4_txt);
@@ -188,6 +188,7 @@
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.VotingData_GV);
             this.Name = "DataForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DataForm";
             this.Load += new System.EventHandler(this.DataForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.VotingData_GV)).EndInit();

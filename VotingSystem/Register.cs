@@ -19,9 +19,9 @@ namespace VotingSystem
 
         private void RegisterForUser_btn_Click(object sender, EventArgs e)
         {
-            RegisterForUser registerUser = new RegisterForUser();
+            RegisterForUser registerForUser = new RegisterForUser();
             this.Hide();
-            registerUser.ShowDialog(this);
+            registerForUser.ShowDialog(this);
             // translate "RegisterForUser"
         }
 

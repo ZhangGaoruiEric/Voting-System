@@ -51,7 +51,7 @@
             this.topicToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(904, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1033, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -106,20 +106,20 @@
             // topicInformationToolStripMenuItem
             // 
             this.topicInformationToolStripMenuItem.Name = "topicInformationToolStripMenuItem";
-            this.topicInformationToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.topicInformationToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
             this.topicInformationToolStripMenuItem.Text = "Topic Information";
             this.topicInformationToolStripMenuItem.Click += new System.EventHandler(this.topicInformationToolStripMenuItem_Click);
             // 
             // addTopicToolStripMenuItem
             // 
             this.addTopicToolStripMenuItem.Name = "addTopicToolStripMenuItem";
-            this.addTopicToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.addTopicToolStripMenuItem.Size = new System.Drawing.Size(214, 26);
             this.addTopicToolStripMenuItem.Text = "Add topic";
             this.addTopicToolStripMenuItem.Click += new System.EventHandler(this.addTopicToolStripMenuItem_Click);
             // 
             // Exit_btn
             // 
-            this.Exit_btn.Location = new System.Drawing.Point(773, 428);
+            this.Exit_btn.Location = new System.Drawing.Point(889, 438);
             this.Exit_btn.Name = "Exit_btn";
             this.Exit_btn.Size = new System.Drawing.Size(75, 23);
             this.Exit_btn.TabIndex = 1;
@@ -129,7 +129,7 @@
             // 
             // Home_btn
             // 
-            this.Home_btn.Location = new System.Drawing.Point(662, 428);
+            this.Home_btn.Location = new System.Drawing.Point(778, 438);
             this.Home_btn.Name = "Home_btn";
             this.Home_btn.Size = new System.Drawing.Size(75, 23);
             this.Home_btn.TabIndex = 2;
@@ -141,12 +141,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 471);
+            this.ClientSize = new System.Drawing.Size(1033, 540);
             this.Controls.Add(this.Home_btn);
             this.Controls.Add(this.Exit_btn);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "StaffManagement";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StaffManagement";
             this.Load += new System.EventHandler(this.StaffManagement_Load);
             this.menuStrip1.ResumeLayout(false);

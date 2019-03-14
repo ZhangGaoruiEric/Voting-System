@@ -108,6 +108,7 @@ namespace VotingSystem
 
         private void AddTopic_Load(object sender, EventArgs e)
         {
+            TopicId_txt.Select();
             this.Resize += new EventHandler(Form1_Resize);
 
             X = this.Width;

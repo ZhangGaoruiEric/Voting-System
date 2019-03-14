@@ -91,10 +91,16 @@ namespace VotingSystem
 
         }
 
-        private void Exit_btn_Click(object sender, EventArgs e)
+        private void RegisterForStaff_Load(object sender, EventArgs e)
         {
-            Application.Exit();
-            // colse program
+            this.Resize += new EventHandler(Form1_Resize);
+
+            X = this.Width;
+            Y = this.Height;
+
+
+            setTag(this);
+            Form1_Resize(new object(), new EventArgs());
         }
 
         private void Home_btn_Click(object sender, EventArgs e)
@@ -102,26 +108,18 @@ namespace VotingSystem
             Login login = new Login();
             this.Hide();
             login.ShowDialog(this);
-            //transfer "Login"
+        }
+
+        private void Exit_btn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void OK_btn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(StaffName_txt.Text))
-            {
-                MessageBox.Show("Enter your name please");
-                return;
-            }
-
-            if (string.IsNullOrEmpty(Password_txt.Text))
-            {
-                MessageBox.Show("Enter your password please");
-                return;
-            }
-
             if (DBConnect())
             {
-                strsql = string.Format("insert into VotingStaff(StaffId,StaffName,Password,Role) values('{0}','{1}','{2}','{3}')", StaffId_txt.Text, StaffName_txt.Text, Password_txt.Text,Role_comboBox.Text);
+                strsql = string.Format("insert into VotingStaff(StaffId,StaffName,Password,Role) values('{0}','{1}','{2}','{3}')", StaffId_txt.Text, StaffName_txt.Text, Password_txt.Text,  Role_comboBox.Text);
                 //Add information in the database
                 MessageBox.Show(strsql);
                 command = new SqlCommand(strsql, mycon);
@@ -144,5 +142,4 @@ namespace VotingSystem
             }
         }
     }
-    }
-
+}

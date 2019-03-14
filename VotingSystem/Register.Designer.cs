@@ -34,7 +34,7 @@
             // 
             // RegisterForUser_btn
             // 
-            this.RegisterForUser_btn.Location = new System.Drawing.Point(337, 100);
+            this.RegisterForUser_btn.Location = new System.Drawing.Point(385, 154);
             this.RegisterForUser_btn.Name = "RegisterForUser_btn";
             this.RegisterForUser_btn.Size = new System.Drawing.Size(254, 63);
             this.RegisterForUser_btn.TabIndex = 0;
@@ -44,7 +44,7 @@
             // 
             // RegisterForStaff_btn
             // 
-            this.RegisterForStaff_btn.Location = new System.Drawing.Point(337, 242);
+            this.RegisterForStaff_btn.Location = new System.Drawing.Point(385, 296);
             this.RegisterForStaff_btn.Name = "RegisterForStaff_btn";
             this.RegisterForStaff_btn.Size = new System.Drawing.Size(254, 63);
             this.RegisterForStaff_btn.TabIndex = 1;
@@ -56,10 +56,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 471);
+            this.ClientSize = new System.Drawing.Size(1033, 540);
             this.Controls.Add(this.RegisterForStaff_btn);
             this.Controls.Add(this.RegisterForUser_btn);
             this.Name = "Register";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
             this.Load += new System.EventHandler(this.Register_Load);
             this.ResumeLayout(false);
