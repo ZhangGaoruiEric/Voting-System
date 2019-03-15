@@ -53,14 +53,22 @@
             this.txtmss = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Dealine_txt = new System.Windows.Forms.TextBox();
-            this.Next_btn = new System.Windows.Forms.Button();
+            this.Home_btn = new System.Windows.Forms.Button();
+            this.Reason_lab4 = new System.Windows.Forms.Label();
+            this.Reason_lab3 = new System.Windows.Forms.Label();
+            this.Reason_lab2 = new System.Windows.Forms.Label();
+            this.Reason_lab1 = new System.Windows.Forms.Label();
+            this.Reason_textBox4 = new System.Windows.Forms.TextBox();
+            this.Reason_textBox3 = new System.Windows.Forms.TextBox();
+            this.Reason_textBox2 = new System.Windows.Forms.TextBox();
+            this.Reason_textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // VotingName_lab
             // 
             this.VotingName_lab.AutoSize = true;
             this.VotingName_lab.BackColor = System.Drawing.Color.White;
-            this.VotingName_lab.Location = new System.Drawing.Point(187, 71);
+            this.VotingName_lab.Location = new System.Drawing.Point(43, 80);
             this.VotingName_lab.Name = "VotingName_lab";
             this.VotingName_lab.Size = new System.Drawing.Size(103, 15);
             this.VotingName_lab.TabIndex = 0;
@@ -70,7 +78,7 @@
             // 
             this.Candidate1_lab.AutoSize = true;
             this.Candidate1_lab.BackColor = System.Drawing.Color.White;
-            this.Candidate1_lab.Location = new System.Drawing.Point(187, 128);
+            this.Candidate1_lab.Location = new System.Drawing.Point(43, 137);
             this.Candidate1_lab.Name = "Candidate1_lab";
             this.Candidate1_lab.Size = new System.Drawing.Size(103, 15);
             this.Candidate1_lab.TabIndex = 1;
@@ -80,7 +88,7 @@
             // 
             this.Candidate2_lab.AutoSize = true;
             this.Candidate2_lab.BackColor = System.Drawing.Color.White;
-            this.Candidate2_lab.Location = new System.Drawing.Point(187, 186);
+            this.Candidate2_lab.Location = new System.Drawing.Point(43, 195);
             this.Candidate2_lab.Name = "Candidate2_lab";
             this.Candidate2_lab.Size = new System.Drawing.Size(103, 15);
             this.Candidate2_lab.TabIndex = 2;
@@ -90,7 +98,7 @@
             // 
             this.Candidate3_lab.AutoSize = true;
             this.Candidate3_lab.BackColor = System.Drawing.Color.White;
-            this.Candidate3_lab.Location = new System.Drawing.Point(187, 242);
+            this.Candidate3_lab.Location = new System.Drawing.Point(43, 251);
             this.Candidate3_lab.Name = "Candidate3_lab";
             this.Candidate3_lab.Size = new System.Drawing.Size(103, 15);
             this.Candidate3_lab.TabIndex = 3;
@@ -100,7 +108,7 @@
             // 
             this.Candiadte4_lab.AutoSize = true;
             this.Candiadte4_lab.BackColor = System.Drawing.Color.White;
-            this.Candiadte4_lab.Location = new System.Drawing.Point(187, 294);
+            this.Candiadte4_lab.Location = new System.Drawing.Point(43, 303);
             this.Candiadte4_lab.Name = "Candiadte4_lab";
             this.Candiadte4_lab.Size = new System.Drawing.Size(103, 15);
             this.Candiadte4_lab.TabIndex = 4;
@@ -110,7 +118,7 @@
             // 
             this.Dealine_lab.AutoSize = true;
             this.Dealine_lab.BackColor = System.Drawing.Color.White;
-            this.Dealine_lab.Location = new System.Drawing.Point(190, 346);
+            this.Dealine_lab.Location = new System.Drawing.Point(46, 355);
             this.Dealine_lab.Name = "Dealine_lab";
             this.Dealine_lab.Size = new System.Drawing.Size(71, 15);
             this.Dealine_lab.TabIndex = 5;
@@ -118,7 +126,7 @@
             // 
             // VotingName_txt
             // 
-            this.VotingName_txt.Location = new System.Drawing.Point(348, 61);
+            this.VotingName_txt.Location = new System.Drawing.Point(204, 70);
             this.VotingName_txt.Name = "VotingName_txt";
             this.VotingName_txt.Size = new System.Drawing.Size(188, 25);
             this.VotingName_txt.TabIndex = 6;
@@ -126,7 +134,7 @@
             // Candidate1_txt
             // 
             this.Candidate1_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.Candidate1_txt.Location = new System.Drawing.Point(348, 118);
+            this.Candidate1_txt.Location = new System.Drawing.Point(204, 127);
             this.Candidate1_txt.Name = "Candidate1_txt";
             this.Candidate1_txt.Size = new System.Drawing.Size(188, 25);
             this.Candidate1_txt.TabIndex = 7;
@@ -134,7 +142,7 @@
             // Candidate2_txt
             // 
             this.Candidate2_txt.BackColor = System.Drawing.Color.PaleGreen;
-            this.Candidate2_txt.Location = new System.Drawing.Point(348, 186);
+            this.Candidate2_txt.Location = new System.Drawing.Point(204, 195);
             this.Candidate2_txt.Name = "Candidate2_txt";
             this.Candidate2_txt.Size = new System.Drawing.Size(188, 25);
             this.Candidate2_txt.TabIndex = 8;
@@ -142,7 +150,7 @@
             // Candidate3_txt
             // 
             this.Candidate3_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.Candidate3_txt.Location = new System.Drawing.Point(348, 239);
+            this.Candidate3_txt.Location = new System.Drawing.Point(204, 248);
             this.Candidate3_txt.Name = "Candidate3_txt";
             this.Candidate3_txt.Size = new System.Drawing.Size(188, 25);
             this.Candidate3_txt.TabIndex = 9;
@@ -151,7 +159,7 @@
             // Candidate4_txt
             // 
             this.Candidate4_txt.BackColor = System.Drawing.Color.PaleGreen;
-            this.Candidate4_txt.Location = new System.Drawing.Point(348, 294);
+            this.Candidate4_txt.Location = new System.Drawing.Point(204, 303);
             this.Candidate4_txt.Name = "Candidate4_txt";
             this.Candidate4_txt.Size = new System.Drawing.Size(188, 25);
             this.Candidate4_txt.TabIndex = 10;
@@ -160,7 +168,7 @@
             // 
             this.Limited_lab.AutoSize = true;
             this.Limited_lab.BackColor = System.Drawing.Color.White;
-            this.Limited_lab.Location = new System.Drawing.Point(190, 405);
+            this.Limited_lab.Location = new System.Drawing.Point(46, 459);
             this.Limited_lab.Name = "Limited_lab";
             this.Limited_lab.Size = new System.Drawing.Size(71, 15);
             this.Limited_lab.TabIndex = 12;
@@ -175,14 +183,14 @@
             "2",
             "3",
             "4"});
-            this.Limited_comboBox.Location = new System.Drawing.Point(348, 402);
+            this.Limited_comboBox.Location = new System.Drawing.Point(204, 456);
             this.Limited_comboBox.Name = "Limited_comboBox";
             this.Limited_comboBox.Size = new System.Drawing.Size(188, 23);
             this.Limited_comboBox.TabIndex = 13;
             // 
             // OK_btn
             // 
-            this.OK_btn.Location = new System.Drawing.Point(593, 436);
+            this.OK_btn.Location = new System.Drawing.Point(795, 488);
             this.OK_btn.Name = "OK_btn";
             this.OK_btn.Size = new System.Drawing.Size(75, 23);
             this.OK_btn.TabIndex = 14;
@@ -192,7 +200,7 @@
             // 
             // Back_btn
             // 
-            this.Back_btn.Location = new System.Drawing.Point(726, 436);
+            this.Back_btn.Location = new System.Drawing.Point(928, 488);
             this.Back_btn.Name = "Back_btn";
             this.Back_btn.Size = new System.Drawing.Size(75, 23);
             this.Back_btn.TabIndex = 15;
@@ -204,7 +212,7 @@
             // 
             this.TopicId_lab.AutoSize = true;
             this.TopicId_lab.BackColor = System.Drawing.Color.White;
-            this.TopicId_lab.Location = new System.Drawing.Point(190, 35);
+            this.TopicId_lab.Location = new System.Drawing.Point(46, 44);
             this.TopicId_lab.Name = "TopicId_lab";
             this.TopicId_lab.Size = new System.Drawing.Size(79, 15);
             this.TopicId_lab.TabIndex = 16;
@@ -212,24 +220,24 @@
             // 
             // TopicId_txt
             // 
-            this.TopicId_txt.Location = new System.Drawing.Point(348, 24);
+            this.TopicId_txt.Location = new System.Drawing.Point(204, 33);
             this.TopicId_txt.Name = "TopicId_txt";
             this.TopicId_txt.Size = new System.Drawing.Size(188, 25);
             this.TopicId_txt.TabIndex = 17;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(593, 338);
+            this.button1.Location = new System.Drawing.Point(507, 401);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 18;
-            this.button1.Text = "开始计时";
+            this.button1.Text = "Start";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // txthour
             // 
-            this.txthour.Location = new System.Drawing.Point(154, 372);
+            this.txthour.Location = new System.Drawing.Point(13, 399);
             this.txthour.Name = "txthour";
             this.txthour.Size = new System.Drawing.Size(90, 25);
             this.txthour.TabIndex = 21;
@@ -237,7 +245,7 @@
             // 
             // txtmm
             // 
-            this.txtmm.Location = new System.Drawing.Point(264, 372);
+            this.txtmm.Location = new System.Drawing.Point(123, 399);
             this.txtmm.Name = "txtmm";
             this.txtmm.Size = new System.Drawing.Size(100, 25);
             this.txtmm.TabIndex = 22;
@@ -245,7 +253,7 @@
             // 
             // txtss
             // 
-            this.txtss.Location = new System.Drawing.Point(390, 372);
+            this.txtss.Location = new System.Drawing.Point(249, 399);
             this.txtss.Name = "txtss";
             this.txtss.Size = new System.Drawing.Size(100, 25);
             this.txtss.TabIndex = 23;
@@ -253,7 +261,7 @@
             // 
             // txtmss
             // 
-            this.txtmss.Location = new System.Drawing.Point(514, 372);
+            this.txtmss.Location = new System.Drawing.Point(373, 399);
             this.txtmss.Name = "txtmss";
             this.txtmss.Size = new System.Drawing.Size(100, 25);
             this.txtmss.TabIndex = 24;
@@ -266,28 +274,105 @@
             // Dealine_txt
             // 
             this.Dealine_txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.Dealine_txt.Location = new System.Drawing.Point(348, 336);
+            this.Dealine_txt.Location = new System.Drawing.Point(204, 345);
             this.Dealine_txt.Name = "Dealine_txt";
             this.Dealine_txt.Size = new System.Drawing.Size(188, 25);
             this.Dealine_txt.TabIndex = 25;
             // 
-            // Next_btn
+            // Home_btn
             // 
-            this.Next_btn.Location = new System.Drawing.Point(264, 436);
-            this.Next_btn.Name = "Next_btn";
-            this.Next_btn.Size = new System.Drawing.Size(75, 23);
-            this.Next_btn.TabIndex = 26;
-            this.Next_btn.Text = "Next";
-            this.Next_btn.UseVisualStyleBackColor = true;
-            this.Next_btn.Click += new System.EventHandler(this.Next_btn_Click);
+            this.Home_btn.Location = new System.Drawing.Point(663, 488);
+            this.Home_btn.Name = "Home_btn";
+            this.Home_btn.Size = new System.Drawing.Size(75, 23);
+            this.Home_btn.TabIndex = 26;
+            this.Home_btn.Text = "Home";
+            this.Home_btn.UseVisualStyleBackColor = true;
+            this.Home_btn.Click += new System.EventHandler(this.Next_btn_Click);
+            // 
+            // Reason_lab4
+            // 
+            this.Reason_lab4.AutoSize = true;
+            this.Reason_lab4.Location = new System.Drawing.Point(562, 310);
+            this.Reason_lab4.Name = "Reason_lab4";
+            this.Reason_lab4.Size = new System.Drawing.Size(63, 15);
+            this.Reason_lab4.TabIndex = 44;
+            this.Reason_lab4.Text = "Reason:";
+            // 
+            // Reason_lab3
+            // 
+            this.Reason_lab3.AutoSize = true;
+            this.Reason_lab3.Location = new System.Drawing.Point(562, 233);
+            this.Reason_lab3.Name = "Reason_lab3";
+            this.Reason_lab3.Size = new System.Drawing.Size(63, 15);
+            this.Reason_lab3.TabIndex = 43;
+            this.Reason_lab3.Text = "Reason:";
+            // 
+            // Reason_lab2
+            // 
+            this.Reason_lab2.AutoSize = true;
+            this.Reason_lab2.Location = new System.Drawing.Point(562, 157);
+            this.Reason_lab2.Name = "Reason_lab2";
+            this.Reason_lab2.Size = new System.Drawing.Size(63, 15);
+            this.Reason_lab2.TabIndex = 42;
+            this.Reason_lab2.Text = "Reason:";
+            // 
+            // Reason_lab1
+            // 
+            this.Reason_lab1.AutoSize = true;
+            this.Reason_lab1.Location = new System.Drawing.Point(562, 80);
+            this.Reason_lab1.Name = "Reason_lab1";
+            this.Reason_lab1.Size = new System.Drawing.Size(63, 15);
+            this.Reason_lab1.TabIndex = 41;
+            this.Reason_lab1.Text = "Reason:";
+            // 
+            // Reason_textBox4
+            // 
+            this.Reason_textBox4.Location = new System.Drawing.Point(663, 284);
+            this.Reason_textBox4.Multiline = true;
+            this.Reason_textBox4.Name = "Reason_textBox4";
+            this.Reason_textBox4.Size = new System.Drawing.Size(276, 77);
+            this.Reason_textBox4.TabIndex = 40;
+            // 
+            // Reason_textBox3
+            // 
+            this.Reason_textBox3.Location = new System.Drawing.Point(663, 201);
+            this.Reason_textBox3.Multiline = true;
+            this.Reason_textBox3.Name = "Reason_textBox3";
+            this.Reason_textBox3.Size = new System.Drawing.Size(276, 77);
+            this.Reason_textBox3.TabIndex = 39;
+            // 
+            // Reason_textBox2
+            // 
+            this.Reason_textBox2.Location = new System.Drawing.Point(663, 118);
+            this.Reason_textBox2.Multiline = true;
+            this.Reason_textBox2.Name = "Reason_textBox2";
+            this.Reason_textBox2.Size = new System.Drawing.Size(276, 77);
+            this.Reason_textBox2.TabIndex = 38;
+            // 
+            // Reason_textBox1
+            // 
+            this.Reason_textBox1.ForeColor = System.Drawing.Color.Black;
+            this.Reason_textBox1.Location = new System.Drawing.Point(663, 35);
+            this.Reason_textBox1.Multiline = true;
+            this.Reason_textBox1.Name = "Reason_textBox1";
+            this.Reason_textBox1.Size = new System.Drawing.Size(276, 77);
+            this.Reason_textBox1.TabIndex = 37;
             // 
             // AddTopic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(904, 471);
-            this.Controls.Add(this.Next_btn);
+            this.ClientSize = new System.Drawing.Size(1033, 540);
+            this.Controls.Add(this.Reason_lab4);
+            this.Controls.Add(this.Reason_lab3);
+            this.Controls.Add(this.Reason_lab2);
+            this.Controls.Add(this.Reason_lab1);
+            this.Controls.Add(this.Reason_textBox4);
+            this.Controls.Add(this.Reason_textBox3);
+            this.Controls.Add(this.Reason_textBox2);
+            this.Controls.Add(this.Reason_textBox1);
+            this.Controls.Add(this.Home_btn);
             this.Controls.Add(this.Dealine_txt);
             this.Controls.Add(this.txtmss);
             this.Controls.Add(this.txtss);
@@ -312,6 +397,7 @@
             this.Controls.Add(this.Candidate1_lab);
             this.Controls.Add(this.VotingName_lab);
             this.Name = "AddTopic";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddTopic";
             this.Load += new System.EventHandler(this.AddTopic_Load);
             this.ResumeLayout(false);
@@ -345,6 +431,14 @@
         private System.Windows.Forms.TextBox txtmss;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TextBox Dealine_txt;
-        private System.Windows.Forms.Button Next_btn;
+        private System.Windows.Forms.Button Home_btn;
+        private System.Windows.Forms.Label Reason_lab4;
+        private System.Windows.Forms.Label Reason_lab3;
+        private System.Windows.Forms.Label Reason_lab2;
+        private System.Windows.Forms.Label Reason_lab1;
+        private System.Windows.Forms.TextBox Reason_textBox4;
+        private System.Windows.Forms.TextBox Reason_textBox3;
+        private System.Windows.Forms.TextBox Reason_textBox2;
+        private System.Windows.Forms.TextBox Reason_textBox1;
     }
 }

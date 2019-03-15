@@ -14,3 +14,7 @@ E:\VotingSystem\VotingSystem\obj\Debug\VotingSystem.EditUserInformation.resource
 E:\VotingSystem\VotingSystem\obj\Debug\VotingSystem.Login.resources
 E:\VotingSystem\VotingSystem\obj\Debug\VotingSystem.Topic.resources
 E:\VotingSystem\VotingSystem\obj\Debug\VotingSystem.EditForTopic.resources
+E:\VotingSystem\VotingSystem\obj\Debug\VotingSystem.EditStaffInformation.resources
+E:\VotingSystem\VotingSystem\obj\Debug\VotingSystem.StaffManagement.resources
+E:\VotingSystem\VotingSystem\obj\Debug\VotingSystem.DataForm.resources
+E:\VotingSystem\VotingSystem\obj\Debug\VotingSystem.Register.resources

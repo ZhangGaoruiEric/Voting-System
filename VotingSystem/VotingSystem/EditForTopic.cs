@@ -59,6 +59,8 @@ namespace VotingSystem
             //Show information to form
         }
 
+        
+
         private void EditForTopic_Load(object sender, EventArgs e)
         {
             DBConnect();
@@ -77,6 +79,17 @@ namespace VotingSystem
             this.EditTopic.Columns[10].Width = 80;
             this.EditTopic.Columns[11].Width = 80;
             EditTopic.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 7, FontStyle.Bold);
+            //Show information from database and change the font
+
+
+            this.Resize += new EventHandler(Form1_Resize);
+
+            X = this.Width;
+            Y = this.Height;
+
+
+            setTag(this);
+            Form1_Resize(new object(), new EventArgs());
         }
 
         private void update_Load(object sender, EventArgs e)
@@ -94,10 +107,8 @@ namespace VotingSystem
             this.EditTopic.Columns[5].Width = 80;
             this.EditTopic.Columns[6].Width = 80;
             this.EditTopic.Columns[7].Width = 80;
-            this.EditTopic.Columns[8].Width = 80;
-            this.EditTopic.Columns[9].Width = 80;
-            this.EditTopic.Columns[10].Width = 80;
-            this.EditTopic.Columns[11].Width = 80;
+            // update informtion to database
+            
             EditTopic.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 7, FontStyle.Bold);
             // Change typeface
             mycon.Close();
@@ -148,15 +159,77 @@ namespace VotingSystem
             Candidate2_txt.Text = EditTopic.CurrentRow.Cells[4].Value.ToString();
             Candidate3_txt.Text = EditTopic.CurrentRow.Cells[5].Value.ToString();
             Candidate4_txt.Text = EditTopic.CurrentRow.Cells[6].Value.ToString();
-            Dealine_txt.Text = EditTopic.CurrentRow.Cells[7].Value.ToString();
+            Deadline_txt.Text = EditTopic.CurrentRow.Cells[7].Value.ToString();
             Limited_comboBox.Text = EditTopic.CurrentRow.Cells[8].Value.ToString();
-            Voting1.Text = EditTopic.CurrentRow.Cells[9].Value.ToString();
-            Voting2.Text = EditTopic.CurrentRow.Cells[10].Value.ToString();
-            Voting3.Text = EditTopic.CurrentRow.Cells[11].Value.ToString();
-            Voting4.Text = EditTopic.CurrentRow.Cells[12].Value.ToString();
+            Candidate1.Text = EditTopic.CurrentRow.Cells[9].Value.ToString();
+            Candidate2.Text = EditTopic.CurrentRow.Cells[10].Value.ToString();
+            Candidate3.Text = EditTopic.CurrentRow.Cells[11].Value.ToString();
+            Candidate4.Text = EditTopic.CurrentRow.Cells[12].Value.ToString();
+            // when user click data, the form will transfor date from table to textbox.
+
         }
 
-       
+        private void Exit_btn_Click(object sender, EventArgs e)
+        {
+            StaffManagement staffManagement = new StaffManagement();
+            this.Hide();
+            staffManagement.ShowDialog(this);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            this.Hide();
+            login.ShowDialog(this);
+        }
+
+        private float X;// set a coordinate X
+
+        private float Y;// set a coordinate Y
+
+        private void setTag(Control cons)
+        {
+            foreach (Control con in cons.Controls)
+            {
+                con.Tag = con.Width + ":" + con.Height + ":" + con.Left + ":" + con.Top + ":" + con.Font.Size;
+                if (con.Controls.Count > 0)
+                    setTag(con);
+                //  Width + Height +Left + Top + Font 
+            }
+        }
+        private void setControls(float newx, float newy, Control cons)
+        {
+            foreach (Control con in cons.Controls)
+            {
+
+                string[] mytag = con.Tag.ToString().Split(new char[] { ':' });
+                float a = Convert.ToSingle(mytag[0]) * newx;
+                con.Width = (int)a;
+                a = Convert.ToSingle(mytag[1]) * newy;
+                con.Height = (int)(a);
+                a = Convert.ToSingle(mytag[2]) * newx;
+                con.Left = (int)(a);
+                a = Convert.ToSingle(mytag[3]) * newy;
+                con.Top = (int)(a);
+                Single currentSize = Convert.ToSingle(mytag[4]) * Math.Min(newx, newy);
+                con.Font = new Font(con.Font.Name, currentSize, con.Font.Style, con.Font.Unit);
+                if (con.Controls.Count > 0)
+                {
+                    setControls(newx, newy, con);
+                }
+            }
+            // Store the original form and font size
+        }
+
+        void Form1_Resize(object sender, EventArgs e)
+        {
+            float newx = (this.Width) / X;
+            float newy = this.Height / Y;
+            setControls(newx, newy, this);
+            this.Text = this.Width.ToString() + " " + this.Height.ToString();
+            // Reset the font when zooming in on the form
+
+        }
 
         private void OK_btn_Click(object sender, EventArgs e)
         {
@@ -166,7 +239,7 @@ namespace VotingSystem
             if (dr == DialogResult.OK)
             {
                 DBConnect();
-                strsql = string.Format("update Topic set TopicName='{0}',Candidate1='{1}',Candidate2='{2}',Candidate3='{3}', Candidate4='{4}',Dealine='{5}',Limtied='{6}',Candidate1Voting ='{7}',Candidate2Voting ='{8}',Candidate3Voting ='{9}',Candidate4Voting ='{10}'where TopicId ='{11}'", VotingName_txt.Text, Candidate1_txt.Text, Candidate2_txt.Text, Candidate3_txt.Text, Candidate4_txt.Text, Dealine_txt.Text, Limited_comboBox.Text, Voting1.Text, Voting2.Text, Voting3.Text, Voting4.Text,Key);
+                strsql = string.Format("update Topic set TopicName='{0}',Candidate1='{1}',Candidate2='{2}',Candidate3='{3}' ,Candidate4='{4}',Dealine='{5}',Limited='{6}' where TopicId ='{7}'", VotingName_txt.Text, Candidate1_txt.Text, Candidate2_txt.Text, Candidate3_txt.Text, Candidate4_txt.Text, Deadline_txt.Text, Limited_comboBox.Text, Key);
                 MessageBox.Show(strsql);
                 command = new SqlCommand(strsql, mycon);
                 try

@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,11 +53,23 @@
     <Compile Include="AddTopic.Designer.cs">
       <DependentUpon>AddTopic.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataForm.Designer.cs">
+      <DependentUpon>DataForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Edit User Information.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Edit User Information.Designer.cs">
       <DependentUpon>Edit User Information.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditStaffInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditStaffInformation.Designer.cs">
+      <DependentUpon>EditStaffInformation.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -66,11 +79,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterForStaff.cs">
+    <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegisterForStaff.Designer.cs">
-      <DependentUpon>RegisterForStaff.cs</DependentUpon>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
     </Compile>
     <Compile Include="EditForTopic.cs">
       <SubType>Form</SubType>
@@ -78,11 +91,23 @@
     <Compile Include="EditForTopic.Designer.cs">
       <DependentUpon>EditForTopic.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegisterForStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterForStaff.Designer.cs">
+      <DependentUpon>RegisterForStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegisterForUser.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RegisterForUser.Designer.cs">
       <DependentUpon>RegisterForUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffManagement.Designer.cs">
+      <DependentUpon>StaffManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Time.cs" />
     <Compile Include="Topic.cs">
@@ -94,8 +119,14 @@
     <EmbeddedResource Include="AddTopic.resx">
       <DependentUpon>AddTopic.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataForm.resx">
+      <DependentUpon>DataForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Edit User Information.resx">
       <DependentUpon>Edit User Information.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditStaffInformation.resx">
+      <DependentUpon>EditStaffInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -109,14 +140,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RegisterForStaff.resx">
-      <DependentUpon>RegisterForStaff.cs</DependentUpon>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForTopic.resx">
       <DependentUpon>EditForTopic.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RegisterForStaff.resx">
+      <DependentUpon>RegisterForStaff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RegisterForUser.resx">
       <DependentUpon>RegisterForUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffManagement.resx">
+      <DependentUpon>StaffManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Topic.resx">
       <DependentUpon>Topic.cs</DependentUpon>

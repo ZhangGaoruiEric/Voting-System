@@ -7,40 +7,63 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace VotingSystem
 {
-    public partial class RegisterForStaff : Form
+    public partial class StaffManagement : Form
     {
-        public RegisterForStaff()
+        public StaffManagement()
         {
             InitializeComponent();
         }
 
-        string strcon, strsql;
-        SqlConnection mycon;
-        SqlCommand command;
-        //Link the database
-        private bool DBConnect()
+        private void userInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditUserInformation editUserInformation = new EditUserInformation();
+            this.Hide();
+            editUserInformation.ShowDialog(this);
+            //transfor "EditUserInformation"
+        }
+
+        private void staffInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditStaffInformation editstaffInformation = new EditStaffInformation();
+            this.Hide();
+            editstaffInformation.ShowDialog(this);
+            //transfor "EditStaffInformation"
+        }
+
+        private void staffToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
 
-            try
-            {
-                strcon = "Data Source=DESKTOP-BAERS9T\\SQLEXPRESS;Initial Catalog=Voting;Integrated Security=True";
-                mycon = new SqlConnection(strcon);
-                mycon.Open();
+        private void registerStaffToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegisterForStaff registerForStaff = new RegisterForStaff();
+            this.Hide();
+            registerForStaff.ShowDialog(this);
+            //transfor "RegisterForStaff"
+        }
 
-                MessageBox.Show("Link datebase is succesfully");
-                return true;
-            }
-            catch
-            {
-                MessageBox.Show("Link datebase is not succesfully");
-                return false;
-            }
-            //Check the database
+        private void topicInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditForTopic editForTopic = new EditForTopic();
+            this.Hide();
+            editForTopic.ShowDialog(this);
+            //transfor "EditForTopic"
+        }
+
+        private void StaffManagement_Load(object sender, EventArgs e)
+        {
+            this.Resize += new EventHandler(Form1_Resize);
+
+            X = this.Width;
+            Y = this.Height;
+
+
+            setTag(this);
+            Form1_Resize(new object(), new EventArgs());
         }
 
         private float X;// set a coordinate X
@@ -91,16 +114,10 @@ namespace VotingSystem
 
         }
 
-        private void RegisterForStaff_Load(object sender, EventArgs e)
+        private void Exit_btn_Click(object sender, EventArgs e)
         {
-            this.Resize += new EventHandler(Form1_Resize);
-
-            X = this.Width;
-            Y = this.Height;
-
-
-            setTag(this);
-            Form1_Resize(new object(), new EventArgs());
+            Application.Exit();
+            // colse this form
         }
 
         private void Home_btn_Click(object sender, EventArgs e)
@@ -110,36 +127,11 @@ namespace VotingSystem
             login.ShowDialog(this);
         }
 
-        private void Exit_btn_Click(object sender, EventArgs e)
+        private void addTopicToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
-
-        private void OK_btn_Click(object sender, EventArgs e)
-        {
-            if (DBConnect())
-            {
-                strsql = string.Format("insert into VotingStaff(StaffId,StaffName,Password,Role) values('{0}','{1}','{2}','{3}')", StaffId_txt.Text, StaffName_txt.Text, Password_txt.Text,  Role_comboBox.Text);
-                //Add information in the database
-                MessageBox.Show(strsql);
-                command = new SqlCommand(strsql, mycon);
-                try
-                {
-                    command.ExecuteScalar();
-                    MessageBox.Show("Successfully register.");
-
-                }
-                catch
-                {
-                    MessageBox.Show("Register Error.");
-                }
-                //Check register
-                finally
-                {
-                    mycon.Close();
-                }
-                //Close the database
-            }
+            AddTopic addTopic = new AddTopic();
+            this.Hide();
+            addTopic.ShowDialog(this);
         }
     }
 }
