@@ -30,7 +30,7 @@ namespace VotingSystem
         {
             try
             {
-                strcon = "Data Source=DESKTOP-BAERS9T\\SQLEXPRESS;Initial Catalog=store;Integrated Security=True";
+                strcon = "Data Source=localhost;Initial Catalog=Voting;Integrated Security=True";
                 // To link database
                 mycon = new SqlConnection(strcon);
                 mycon.Open();

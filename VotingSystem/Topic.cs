@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Threading;
+using System.Diagnostics;
 
 namespace VotingSystem
 {
@@ -27,6 +29,7 @@ namespace VotingSystem
         SqlDataAdapter da;
         //Link database
         string Key;//Key word
+        int TimeCount = 0;
 
         private bool DBConnect()
         {
@@ -34,7 +37,7 @@ namespace VotingSystem
 
             try
             {
-                strcon = "Data Source=DESKTOP-BAERS9T\\SQLEXPRESS;Initial Catalog=Voting;Integrated Security=True";
+                strcon = "Data Source=localhost;Initial Catalog=Voting;Integrated Security=True";
                 mycon = new SqlConnection(strcon);
                 mycon.Open();
 
@@ -107,6 +110,9 @@ namespace VotingSystem
             da.Fill(ds, "topic");
             Topic_GD.DataSource = ds.Tables["topic"];
             //Show information to form
+
+            timer1.Interval = 1;
+            timer1.Start();
         }
 
         private void Topic_GD_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -124,8 +130,37 @@ namespace VotingSystem
             Candidate2_lab.Text = Topic_GD.CurrentRow.Cells[9].Value.ToString();
             Candidate3_lab.Text = Topic_GD.CurrentRow.Cells[10].Value.ToString();
             Candidate4_lab.Text = Topic_GD.CurrentRow.Cells[11].Value.ToString();
-            // when users click data, it will transfor data from form to textbox 
+
+            showCountDown(Topic_GD.CurrentRow.Cells[12].Value.ToString(), Topic_GD.CurrentRow.Cells[6].Value.ToString());
         }
+
+        private void showCountDown(String previousTimeString, String deadline)
+        {
+            if (previousTimeString == null || previousTimeString.Length == 0)
+            {
+                TimeCount = 0;
+            }
+            else
+            {
+                DateTime currentTime = DateTime.Now;
+                DateTime previousTime = Convert.ToDateTime(String.Copy(previousTimeString));
+
+
+                TimeSpan diff = currentTime.Subtract(previousTime);
+
+                if (diff.TotalSeconds >= Convert.ToInt32(Dealine_txt.Text) * 60)
+                {
+                    TimeCount = 0;
+                }
+                else
+                {
+                    Debug.WriteLine("in: " + diff.Seconds + " " + Convert.ToInt32(Dealine_txt.Text) * 60);
+                    TimeCount = (Convert.ToInt32(Dealine_txt.Text) * 60 * 1000) - Convert.ToInt32(diff.TotalSeconds * 1000);
+                }
+            }
+          
+        }
+
 
         private void OK_btn_Click(object sender, EventArgs e)
         {
@@ -133,381 +168,381 @@ namespace VotingSystem
             this.txtmm.Text = (Convert.ToInt32(txtmm.Text)).ToString();
             this.txtss.Text = (Convert.ToInt32(txtss.Text)).ToString();
             this.txtmss.Text = (Convert.ToInt32(txtmss.Text)).ToString();
-            if (this.txthour.Text == "0" & this.txtmm.Text == "0" & this.txtss.Text == "0" & this.txtmss.Text == "0")
+
+            if (TimeCount <= 0)
             {
-                this.timer1.Stop();
-                MessageBox.Show("Invalid vote");
-
-            }
-
-            if (Limited_txt.Text[0].ToString() == "1") // when limited =1
+                MessageBox.Show("Voting Time Expired.");
+            } else
             {
-                if (Candidate1.Checked == true)
+                if (Limited_txt.Text[0].ToString() == "1") // when limited =1
                 {
-                    DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 where TopicId = '{1}'", Candidate1_lab.Text,TopicId_txt.Text,  Key);// Voting candidate's vote +1
-                    command = new SqlCommand(strsql, mycon);
-                    try
+                    if (Candidate1.Checked == true)
                     {
-                        command.ExecuteScalar();
-                        MessageBox.Show("Successfully Voting.");
+                        DBConnect();
+                        strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 where TopicId = '{1}'", Candidate1_lab.Text, TopicId_txt.Text, Key);// Voting candidate's vote +1
+                        command = new SqlCommand(strsql, mycon);
+                        try
+                        {
+                            command.ExecuteScalar();
+                            MessageBox.Show("Successfully Voting.");
+
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Voting Error.");
+                        }
+                        //Check register
+                        finally
+                        {
+                            mycon.Close();
+                        }
+                        //Close the database
+
+
 
                     }
-                    catch
-                    {
-                        MessageBox.Show("Voting Error.");
-                    }
-                    //Check register
-                    finally
-                    {
-                        mycon.Close();
-                    }
-                    //Close the database
 
-                
+                    if (Candidate2.Checked == true) // 
+                    {
+                        DBConnect();
+                        strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 where TopicId = '{1}'", Candidate2_lab.Text, TopicId_txt.Text, Key);// voting candidate2 vote +1
+                        command = new SqlCommand(strsql, mycon);
+                        try
+                        {
+                            command.ExecuteScalar();
+                            MessageBox.Show("Successfully Voting.");
+
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Voting Error.");
+                        }
+                        //Check register
+                        finally
+                        {
+                            mycon.Close();
+                        }
+                        //Close the database
+                    }
+
+                    if (Candidate3.Checked == true)
+                    {
+                        DBConnect();
+                        strsql = string.Format("update Topic set Candidate3Voting = Candidate3Voting +1 where TopicId = '{1}'", Candidate3_lab.Text, TopicId_txt.Text, Key);// voting candidate3 vote +1
+                        command = new SqlCommand(strsql, mycon);
+                        try
+                        {
+                            command.ExecuteScalar();
+                            MessageBox.Show("Successfully Voting.");
+
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Voting Error.");
+                        }
+                        //Check register
+                        finally
+                        {
+                            mycon.Close();
+                        }
+                        //Close the database
+                    }
+
+                    if (Candidate4.Checked == true)
+                    {
+                        DBConnect();
+                        strsql = string.Format("update Topic set Candidate4Voting = Candidate4Voting +1 where TopicId = '{1}'", Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate4 vote +1
+                        command = new SqlCommand(strsql, mycon);
+                        try
+                        {
+                            command.ExecuteScalar();
+                            MessageBox.Show("Successfully Voting.");
+
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Voting Error.");
+                        }
+                        //Check register
+                        finally
+                        {
+                            mycon.Close();
+                        }
+                        //Close the database
+                    }
+
 
                 }
 
-                if (Candidate2.Checked == true) // 
+                if (Limited_txt.Text[0].ToString() == "2") // when limited is 2
                 {
-                    DBConnect();
-                    strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 where TopicId = '{1}'", Candidate2_lab.Text,TopicId_txt.Text,  Key);// voting candidate2 vote +1
-                    command = new SqlCommand(strsql, mycon);
-                    try
+                    if (Candidate1.Checked && Candidate2.Checked)
                     {
-                        command.ExecuteScalar();
-                        MessageBox.Show("Successfully Voting.");
+                        DBConnect();
+                        strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 where TopicId = '{2}'", Candidate1_lab.Text, Candidate2_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 2 vote +1
+                        MessageBox.Show(strsql);
+                        command = new SqlCommand(strsql, mycon);
+                        try
+                        {
+                            command.ExecuteScalar();
+                            MessageBox.Show("Successfully Voting.");
 
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Voting Error.");
+                        }
+                        //Check register
+                        finally
+                        {
+                            mycon.Close();
+                        }
+                        //Close the database
                     }
-                    catch
+
+                    if (Candidate1.Checked && Candidate3.Checked == true)
                     {
-                        MessageBox.Show("Voting Error.");
+                        DBConnect();
+                        strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate3Voting = Candidate3Voting +1 where TopicId = '{2}'", Candidate1_lab.Text, Candidate3_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 3 vote +1
+                        command = new SqlCommand(strsql, mycon);
+                        try
+                        {
+                            command.ExecuteScalar();
+                            MessageBox.Show("Successfully Voting.");
+
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Voting Error.");
+                        }
+                        //Check register
+                        finally
+                        {
+                            mycon.Close();
+                        }
+                        //Close the database
                     }
-                    //Check register
-                    finally
+
+                    if (Candidate1.Checked && Candidate4.Checked == true)
                     {
-                        mycon.Close();
+                        DBConnect();
+                        strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{2}'", Candidate1_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 4 vote +1
+                        command = new SqlCommand(strsql, mycon);
+                        try
+                        {
+                            command.ExecuteScalar();
+                            MessageBox.Show("Successfully Voting.");
+
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Voting Error.");
+                        }
+                        //Check register
+                        finally
+                        {
+                            mycon.Close();
+                        }
+                        //Close the database
                     }
-                    //Close the database
+
+                    if (Candidate2.Checked && Candidate3.Checked == true)
+                    {
+                        DBConnect();
+                        strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 where TopicId = '{2}'", Candidate2_lab.Text, Candidate3_lab.Text, TopicId_txt.Text, Key);// voting candidate2 and 3 vote +1
+                        command = new SqlCommand(strsql, mycon);
+                        try
+                        {
+                            command.ExecuteScalar();
+                            MessageBox.Show("Successfully Voting.");
+
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Voting Error.");
+                        }
+                        //Check register
+                        finally
+                        {
+                            mycon.Close();
+                        }
+                        //Close the database
+                    }
+
+                    if (Candidate2.Checked && Candidate4.Checked == true)
+                    {
+                        DBConnect();
+                        strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{2}'", Candidate2_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate2 and 4 vote +1
+                        command = new SqlCommand(strsql, mycon);
+                        try
+                        {
+                            command.ExecuteScalar();
+                            MessageBox.Show("Successfully Voting.");
+
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Voting Error.");
+                        }
+                        //Check register
+                        finally
+                        {
+                            mycon.Close();
+                        }
+                        //Close the database
+                    }
+
+                    if (Candidate3.Checked && Candidate4.Checked == true)
+                    {
+                        DBConnect();
+                        strsql = string.Format("update Topic set Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{2}'", Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate3 and 4 vote +1
+                        command = new SqlCommand(strsql, mycon);
+                        try
+                        {
+                            command.ExecuteScalar();
+                            MessageBox.Show("Successfully Voting.");
+
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Voting Error.");
+                        }
+                        //Check register
+                        finally
+                        {
+                            mycon.Close();
+                        }
+                        //Close the database
+                    }
+
                 }
 
-                if (Candidate3.Checked == true) 
+                if (Limited_txt.Text[0].ToString() == "3") // when limited is 3
                 {
-                    DBConnect();
-                    strsql = string.Format("update Topic set Candidate3Voting = Candidate3Voting +1 where TopicId = '{1}'", Candidate3_lab.Text, TopicId_txt.Text, Key);// voting candidate3 vote +1
-                    command = new SqlCommand(strsql, mycon);
-                    try
+                    if (Candidate1.Checked && Candidate2.Checked && Candidate3.Checked == true)
                     {
-                        command.ExecuteScalar();
-                        MessageBox.Show("Successfully Voting.");
+                        DBConnect();
+                        strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 where TopicId = '{3}'", Candidate1_lab.Text, Candidate2_lab.Text, Candidate3_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 2 and 3vote +1
+                        MessageBox.Show(strsql);
+                        command = new SqlCommand(strsql, mycon);
+                        try
+                        {
+                            command.ExecuteScalar();
+                            MessageBox.Show("Successfully Voting.");
 
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Voting Error.");
+                        }
+                        //Check register
+                        finally
+                        {
+                            mycon.Close();
+                        }
+                        //Close the database
                     }
-                    catch
+
+                    if (Candidate1.Checked && Candidate2.Checked && Candidate4.Checked == true)
                     {
-                        MessageBox.Show("Voting Error.");
+                        DBConnect();
+                        strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{3}'", Candidate1_lab.Text, Candidate2_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 2 and 4vote +1
+                        MessageBox.Show(strsql);
+                        command = new SqlCommand(strsql, mycon);
+                        try
+                        {
+                            command.ExecuteScalar();
+                            MessageBox.Show("Successfully Voting.");
+
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Voting Error.");
+                        }
+                        //Check register
+                        finally
+                        {
+                            mycon.Close();
+                        }
+                        //Close the database
                     }
-                    //Check register
-                    finally
+
+                    if (Candidate2.Checked && Candidate3.Checked && Candidate4.Checked == true)
                     {
-                        mycon.Close();
+                        DBConnect();
+                        strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{3}'", Candidate2_lab.Text, Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate3 and 2 and 4vote +1
+                        MessageBox.Show(strsql);
+                        command = new SqlCommand(strsql, mycon);
+                        try
+                        {
+                            command.ExecuteScalar();
+                            MessageBox.Show("Successfully Voting.");
+
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Voting Error.");
+                        }
+                        //Check register
+                        finally
+                        {
+                            mycon.Close();
+                        }
+                        //Close the database
                     }
-                    //Close the database
+
+                    if (Candidate1.Checked && Candidate3.Checked && Candidate4.Checked == true)
+                    {
+                        DBConnect();
+                        strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{3}'", Candidate1_lab.Text, Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 3 and 4 vote +1
+                        MessageBox.Show(strsql);
+                        command = new SqlCommand(strsql, mycon);
+                        try
+                        {
+                            command.ExecuteScalar();
+                            MessageBox.Show("Successfully Voting.");
+
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Voting Error.");
+                        }
+                        //Check register
+                        finally
+                        {
+                            mycon.Close();
+                        }
+                        //Close the database
+                    }
+
+
                 }
 
-                if (Candidate4.Checked == true)
+                if (Limited_txt.Text[0].ToString() == "4") //when limited is 4
                 {
-                    DBConnect();
-                    strsql = string.Format("update Topic set Candidate4Voting = Candidate4Voting +1 where TopicId = '{1}'", Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate4 vote +1
-                    command = new SqlCommand(strsql, mycon);
-                    try
+                    if (Candidate1.Checked && Candidate2.Checked && Candidate3.Checked && Candidate4.Checked == true)
                     {
-                        command.ExecuteScalar();
-                        MessageBox.Show("Successfully Voting.");
+                        DBConnect();
+                        strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1where TopicId = '{4}'", Candidate1_lab.Text, Candidate2_lab.Text, Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 2 and 3 and 4 vote +1
+                        MessageBox.Show(strsql);
+                        command = new SqlCommand(strsql, mycon);
+                        try
+                        {
+                            command.ExecuteScalar();
+                            MessageBox.Show("Successfully Voting.");
 
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Voting Error.");
+                        }
+                        //Check register
+                        finally
+                        {
+                            mycon.Close();
+                        }
+                        //Close the database
                     }
-                    catch
-                    {
-                        MessageBox.Show("Voting Error.");
-                    }
-                    //Check register
-                    finally
-                    {
-                        mycon.Close();
-                    }
-                    //Close the database
-                }
-
-
-            }
-
-            if (Limited_txt.Text[0].ToString() == "2") // when limited is 2
-            {
-                if (Candidate1.Checked && Candidate2.Checked)
-                {
-                    DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 where TopicId = '{2}'", Candidate1_lab.Text,Candidate2_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 2 vote +1
-                    MessageBox.Show(strsql);
-                    command = new SqlCommand(strsql, mycon);
-                    try
-                    {
-                        command.ExecuteScalar();
-                        MessageBox.Show("Successfully Voting.");
-
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Voting Error.");
-                    }
-                    //Check register
-                    finally
-                    {
-                        mycon.Close();
-                    }
-                    //Close the database
-                }
-
-                if (Candidate1.Checked && Candidate3.Checked == true)
-                {
-                    DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate3Voting = Candidate3Voting +1 where TopicId = '{2}'", Candidate1_lab.Text, Candidate3_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 3 vote +1
-                    command = new SqlCommand(strsql, mycon);
-                    try
-                    {
-                        command.ExecuteScalar();
-                        MessageBox.Show("Successfully Voting.");
-
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Voting Error.");
-                    }
-                    //Check register
-                    finally
-                    {
-                        mycon.Close();
-                    }
-                    //Close the database
-                }
-
-                if (Candidate1.Checked && Candidate4.Checked == true)
-                {
-                    DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{2}'", Candidate1_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 4 vote +1
-                    command = new SqlCommand(strsql, mycon);
-                    try
-                    {
-                        command.ExecuteScalar();
-                        MessageBox.Show("Successfully Voting.");
-
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Voting Error.");
-                    }
-                    //Check register
-                    finally
-                    {
-                        mycon.Close();
-                    }
-                    //Close the database
-                }
-
-                if (Candidate2.Checked && Candidate3.Checked == true)
-                {
-                    DBConnect();
-                    strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 where TopicId = '{2}'", Candidate2_lab.Text, Candidate3_lab.Text, TopicId_txt.Text, Key);// voting candidate2 and 3 vote +1
-                    command = new SqlCommand(strsql, mycon);
-                    try
-                    {
-                        command.ExecuteScalar();
-                        MessageBox.Show("Successfully Voting.");
-
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Voting Error.");
-                    }
-                    //Check register
-                    finally
-                    {
-                        mycon.Close();
-                    }
-                    //Close the database
-                }
-
-                if (Candidate2.Checked && Candidate4.Checked == true)
-                {
-                    DBConnect();
-                    strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{2}'", Candidate2_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate2 and 4 vote +1
-                    command = new SqlCommand(strsql, mycon);
-                    try
-                    {
-                        command.ExecuteScalar();
-                        MessageBox.Show("Successfully Voting.");
-
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Voting Error.");
-                    }
-                    //Check register
-                    finally
-                    {
-                        mycon.Close();
-                    }
-                    //Close the database
-                }
-
-                if (Candidate3.Checked && Candidate4.Checked == true)
-                {
-                    DBConnect();
-                    strsql = string.Format("update Topic set Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{2}'", Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate3 and 4 vote +1
-                    command = new SqlCommand(strsql, mycon);
-                    try
-                    {
-                        command.ExecuteScalar();
-                        MessageBox.Show("Successfully Voting.");
-
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Voting Error.");
-                    }
-                    //Check register
-                    finally
-                    {
-                        mycon.Close();
-                    }
-                    //Close the database
-                }
-
-            }
-
-            if (Limited_txt.Text[0].ToString() == "3") // when limited is 3
-            {
-                if (Candidate1.Checked && Candidate2.Checked && Candidate3.Checked == true)
-                {
-                    DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 where TopicId = '{3}'", Candidate1_lab.Text, Candidate2_lab.Text, Candidate3_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 2 and 3vote +1
-                    MessageBox.Show(strsql);
-                    command = new SqlCommand(strsql, mycon);
-                    try
-                    {
-                        command.ExecuteScalar();
-                        MessageBox.Show("Successfully Voting.");
-
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Voting Error.");
-                    }
-                    //Check register
-                    finally
-                    {
-                        mycon.Close();
-                    }
-                    //Close the database
-                }
-
-                if (Candidate1.Checked && Candidate2.Checked && Candidate4.Checked == true)
-                {
-                    DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{3}'", Candidate1_lab.Text, Candidate2_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 2 and 4vote +1
-                    MessageBox.Show(strsql);
-                    command = new SqlCommand(strsql, mycon);
-                    try
-                    {
-                        command.ExecuteScalar();
-                        MessageBox.Show("Successfully Voting.");
-
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Voting Error.");
-                    }
-                    //Check register
-                    finally
-                    {
-                        mycon.Close();
-                    }
-                    //Close the database
-                }
-
-                if (Candidate2.Checked && Candidate3.Checked && Candidate4.Checked == true)
-                {
-                    DBConnect();
-                    strsql = string.Format("update Topic set Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{3}'", Candidate2_lab.Text, Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate3 and 2 and 4vote +1
-                    MessageBox.Show(strsql);
-                    command = new SqlCommand(strsql, mycon);
-                    try
-                    {
-                        command.ExecuteScalar();
-                        MessageBox.Show("Successfully Voting.");
-
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Voting Error.");
-                    }
-                    //Check register
-                    finally
-                    {
-                        mycon.Close();
-                    }
-                    //Close the database
-                }
-
-                if (Candidate1.Checked && Candidate3.Checked && Candidate4.Checked == true)
-                {
-                    DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1 where TopicId = '{3}'", Candidate1_lab.Text, Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 3 and 4 vote +1
-                    MessageBox.Show(strsql);
-                    command = new SqlCommand(strsql, mycon);
-                    try
-                    {
-                        command.ExecuteScalar();
-                        MessageBox.Show("Successfully Voting.");
-
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Voting Error.");
-                    }
-                    //Check register
-                    finally
-                    {
-                        mycon.Close();
-                    }
-                    //Close the database
-                }
-
-                
-                }
-
-            if (Limited_txt.Text[0].ToString() == "4") //when limited is 4
-            {
-                if (Candidate1.Checked && Candidate2.Checked && Candidate3.Checked && Candidate4.Checked == true)
-                {
-                    DBConnect();
-                    strsql = string.Format("update Topic set Candidate1Voting = Candidate1Voting +1 , Candidate2Voting = Candidate2Voting +1 , Candidate3Voting = Candidate3Voting +1 , Candidate4Voting = Candidate4Voting +1where TopicId = '{4}'", Candidate1_lab.Text, Candidate2_lab.Text, Candidate3_lab.Text, Candidate4_lab.Text, TopicId_txt.Text, Key);// voting candidate1 and 2 and 3 and 4 vote +1
-                    MessageBox.Show(strsql);
-                    command = new SqlCommand(strsql, mycon);
-                    try
-                    {
-                        command.ExecuteScalar();
-                        MessageBox.Show("Successfully Voting.");
-
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Voting Error.");
-                    }
-                    //Check register
-                    finally
-                    {
-                        mycon.Close();
-                    }
-                    //Close the database
                 }
             }
 
@@ -517,27 +552,8 @@ namespace VotingSystem
         {
 
         }
-        int Timecount = 0;
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (Timecount >= 0)
-            {
-                this.txthour.Text = Timecount .ToString();
-                this.txtmm.Text = Timecount.ToString();
-                this.txtss.Text = Timecount.ToString();
-                this.txtmss.Text = Timecount.ToString();
-                
-                if (Timecount == 0)
-                {
-                    txthour.ForeColor = Color.Red;
-                    txtmm.ForeColor = Color.Red;
-                    txtss.ForeColor = Color.Red;
-                    txtmss.ForeColor = Color.Red;
-                }
-                Timecount -= 10;
-            }
-        }
+        
 
         private void update_Load(object sender, EventArgs e)
         {
@@ -588,6 +604,36 @@ namespace VotingSystem
         {
             Application.Exit();
             //colse this form
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (TimeCount > 0)
+            {
+                txthour.ForeColor = Color.Black;
+                txtmm.ForeColor = Color.Black;
+                txtss.ForeColor = Color.Black;
+                txtmss.ForeColor = Color.Black;
+                
+                this.txthour.Text = (TimeCount / 60 / 60 / 1000).ToString();
+                this.txtmm.Text = ((TimeCount / 60 / 1000) % 60).ToString();
+                this.txtss.Text = ((TimeCount / 1000) % 60).ToString();
+                this.txtmss.Text = (TimeCount % 1000).ToString();
+
+                TimeCount -= 16;
+            }
+            else
+            {
+                txthour.ForeColor = Color.Red;
+                txtmm.ForeColor = Color.Red;
+                txtss.ForeColor = Color.Red;
+                txtmss.ForeColor = Color.Red;
+                txthour.Text = (0).ToString();
+                txtmm.Text = (0).ToString();
+                txtss.Text = (0).ToString();
+                txtmss.Text = (0).ToString();
+            }
+
         }
 
         private void Topic_Load(object sender, EventArgs e)

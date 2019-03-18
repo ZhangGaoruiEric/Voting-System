@@ -19,6 +19,7 @@ namespace VotingSystem
             InitializeComponent();
         }
 
+        DateTime startCountdown;
         string strcon, strsql;
         SqlConnection mycon;
         SqlCommand command;
@@ -29,7 +30,7 @@ namespace VotingSystem
 
             try
             {
-                strcon = "Data Source=DESKTOP-BAERS9T\\SQLEXPRESS;Initial Catalog=Voting;Integrated Security=True";
+                strcon = "Data Source=localhost;Initial Catalog=Voting;Integrated Security=True";
                 mycon = new SqlConnection(strcon);
                 mycon.Open();
 
@@ -141,6 +142,7 @@ namespace VotingSystem
                 this.timer1.Start();
                 if (isstop == 0)//Countdown if the first execution or countdown event setting changes
                 {
+                    startCountdown = DateTime.Now;
                     Timecount = Convert.ToInt32(Dealine_txt.Text) * 60000;//millisecond
                     Thread counter = new Thread(Counter);
                     counter.Start();
@@ -287,7 +289,7 @@ namespace VotingSystem
 
             if (DBConnect())
             {
-                strsql = string.Format("insert into Topic(TopicId,TopicName,Candidate1,Candidate2,Candidate3,Candidate4,Dealine,Limited) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", TopicId_txt.Text, VotingName_txt.Text, Candidate1_txt.Text, Candidate2_txt.Text, Candidate3_txt.Text, Candidate4_txt.Text,Dealine_txt.Text,Limited_comboBox.Text);
+                strsql = string.Format("insert into Topic(TopicId,TopicName,Candidate1,Candidate2,Candidate3,Candidate4,Dealine,Limited, Created) values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}', '{8}')", TopicId_txt.Text, VotingName_txt.Text, Candidate1_txt.Text, Candidate2_txt.Text, Candidate3_txt.Text, Candidate4_txt.Text,Dealine_txt.Text,Limited_comboBox.Text, startCountdown);
                 //Add information in the database
                 MessageBox.Show(strsql);
                 command = new SqlCommand(strsql, mycon);
