@@ -1,0 +1,67 @@
+﻿@model IEnumerable<VotingSystem.data.Topic_Recording>
+
+@{
+    ViewBag.Title = "GetTopicRecordings";
+}
+
+<h2>GetTopicRecordings</h2>
+
+<p>
+    @Html.ActionLink("User", "GetUserRecordings", new { Controller = "User" }) |
+    @Html.ActionLink("Admin", "GetAdministratorRecordings", new { Controller = "Administrator" })
+    @Html.ActionLink("AdministratorRegister", "AdministratorRegister", new { Controller = "Administrator" })
+    @Html.ActionLink("UserRegister", "UserRegister", new { Controller = "User" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TopicName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TopicSponsor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidateA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidateB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BScore)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TopicName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TopicSponsor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CandidateA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CandidateB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BScore)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "GetTopicDetails", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+           
+        </td>
+    </tr>
+}
+
+</table>
